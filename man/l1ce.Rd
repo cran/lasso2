@@ -91,10 +91,10 @@ l1ce(formula, data = sys.parent(), weights, subset, na.action,
   See \code{\link{l1ce.object}} and \code{\link{l1celist.object}} for details.
 }
 \references{
-  Osborne, M.R., Presnell, B. and Turlach, B.A. (1999)
-  On the LASSO and its dual,
-  \emph{Journal of Computational and Graphical Statistics};
-  To appear.%% <<<< FIXME >>>>>>
+  Osborne, M.R., Presnell, B. and Turlach, B.A. (2000)
+  On the LASSO and its Dual,
+  \emph{Journal of Computational and Graphical Statistics}
+  \bold{9}(2), 319--337.
 
   Tibshirani, R. (1996)
   Regression shrinkage and selection via the lasso,

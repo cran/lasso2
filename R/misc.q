@@ -37,45 +37,37 @@
   val <- NextMethod("[")
   junk <- do.call("c", lapply(val,length))
   val <- val[junk!=0]
-  if( !length(val) ) return (NULL)
-  if( drop && length(val)==1 ){
+  if(!length(val)) return (NULL)
+  if(drop && length(val) == 1) {
     val <- val[[1]]
-
     xattr <- attributes(x)
     nattr <- names(xattr)
     val[nattr] <- xattr[nattr]
-
     class(val) <- "l1ce"
-    val
-  }else{
+  } else {
     attributes(val) <- attributes(x)
     class(val) <- "l1celist"
-    val
   }
+  val
 }
 
 aux <- function(object, ...) UseMethod("aux")
 
 aux.l1celist <- function(object, ...)
 {
-  res1 <- do.call("c", lapply(object, "[[", "relative.bound"))
-  res2 <- do.call("c", lapply(object, "[[", "bound"))
-  res3 <- do.call("c", lapply(object, "[[", "Lagrangian"))
-
-  if( is.null(res1) ){
-    structure(cbind(res2,res3),
-              dimnames=list(NULL, c("abs.bound", "Lagrangian")))
-  }else{
-    structure(cbind(res1, res2,res3),
-              dimnames=list(NULL, c("rel.bound", "abs.bound",
-                "Lagrangian")))
-  }
+  rbnd <- do.call("c", lapply(object, "[[", "relative.bound"))
+  structure(cbind(rbnd,
+                  do.call("c", lapply(object, "[[", "bound")),
+                  do.call("c", lapply(object, "[[", "Lagrangian")) ),
+            dimnames=list(NULL,
+            c(if(!is.null(rbnd))"rel.bound", "abs.bound", "Lagrangian")))
 }
 
-tr <- function(mat){
-
+## Trace
+tr <- function(mat)
+{
   dims <- dim(mat)
-  if((length(dims) !=2) || dims[1]!=dims[2])
+  if((length(dims) != 2) || dims[1] != dims[2])
     stop("This function is only defined for square matrices")
 
   sum(diag(mat))

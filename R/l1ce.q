@@ -6,20 +6,21 @@
 if(is.R()) {
 ### -- this is also used in gl1ce() hence ``package global'' :
 
-    ## Orig 2.1 version (for S+) calls  qr.rtr.inv(.) which is not in R
-    ## is only used to return the (R'R)^{-1} which MM thinks should
+    ## Orig 2.1 version (for S+) calls  qr.rtr.inv(.) which is not in R;
+    ## Is only used to return the (R'R)^{-1} where MM thinks should
     ## rather return the QR object (or just its  $qr and $rank) !!
     ## It's only summary() or vcov() which needs this, and
-    ## they really can comput it then instead of now
+    ## they really can compute it *then* instead of *now*
     qr.rtr.inv <- function(qr)
     {
-        R <- qr$qr
+        if(is.null(R <- qr$qr))
+            stop("argument is not a valid \"qr\" object")
         p <- qr$rank
         rinv <- backsolve(R[1:p, 1:p, drop = FALSE], diag(p))
-        rinv <- rinv %*% t(rinv)
+        r <- rinv %*% t(rinv)
         nm <- (dimnames(R)[[2]])[1:p]
-        dimnames(rinv) <- list(nm, nm)
-        rinv
+        dimnames(r) <- list(nm, nm)
+        r
     }
 }
 
@@ -103,23 +104,26 @@ l1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
         X.to.C <- sweep(X.to.C, 2, X.to.C.stds, "/")
     }
 
+    n <- nrow(X.to.C)
+    p <- ncol(X.to.C)
+
     if(!absolute.t) {
-        X.to.C.qr <- qr(X.to.C)
-        if( X.to.C.qr$rank != ncol(X.to.C) )
-            warning("Matrix build from transformed variables rank deficient")
-        else if( X.to.C.qr$rank == 0 )
-            stop("Matrix build from transformed variables is null matrix")
-        t0 <- sum(abs(qr.coef(X.to.C.qr,Y.to.C)))
+        rnk <- (X.to.C.qr <- qr(X.to.C))$rank
+        if(rnk != p) ## maybe:  && p < n
+            warning("X Matrix (transformed variables) has rank ",rnk,
+                    " < p = ",p,", i.e., is deficient")
+        else if( rnk == 0 )
+            stop("Matrix built from transformed variables is null matrix")
+        t0 <- sum(abs(qr.coef(X.to.C.qr, Y.to.C))[1:rnk])
         if( any(bound > 1) )
             stop("`bound'(s) must be between 0 and 1 if  absolute.t is false")
 
         bound <- (relative.bound <- bound) * t0
+
     }
     if(any(bound < 0))
         stop("`bound'(s) must be non negative")
 
-    n <- nrow(X.to.C)
-    p <- ncol(X.to.C)
     if( length(guess.constrained.coefficients) != p )
         stop("invalid argument for `guess.constrained.coefficients'")
 

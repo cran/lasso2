@@ -1,4 +1,47 @@
+2002-04-09  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+        * release 1.0-2 to CRAN
+
+	* man/l1ce.Rd: correct reference to JCGS paper
+	* man/gl1ce.Rd: link to Berwin's website mentioning Justin Lokhorst's
+		honors report.
+	* inst/doc/justin.lokhorst.ps: is now removed
+	* inst/doc/Manual-wo-help.pdf: instead of ps.
+
+	* man/qr.rtr.inv.Rd: new file documenting qr.rtr.inv()
+
+2002-02-25  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* man/zaux.Rd and zaux.l1celist.Rd : renamed from aux.* since that
+	is `invalid' on Windows.
+
+2002-02-08  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* DESCRIPTION (Version): 1.0-2
+	  (not submitted; for internal use)
+
+	* tests/l1ce-tst.R: new file; first testing, also n < p
+
+	* R/misc.q (aux.l1celist): simplification
+
+	* R/l1ce.q (l1ce): patch to improve working with rank deficient X
+	  e.g. (n < p)!
+
+	* Changelog: Appended Berwin's S-plus original one.
+
+	* man/lasso-internal.Rd: added (to get rid of last warning).
+
+	* man/plot.l1celist.Rd:
+	* R/plot.q: use type = "b" and other more useful default arguments
+	* R/force_ld.q is garbage for R --> rm!
+
 2002-02-06  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* First release to CRAN
+	  ---------------------
+
+ 	* DESCRIPTION (Version): 1.0-1
+		  (as Berwin explained, "2" is no version number!)
 
 	* src/lasso.h: define macro Sprintf() = Rprintf() in R, else = printf()
 	* src/lasso.c: s/printf/Sprintf/
@@ -9,9 +52,6 @@
 	Many more (using R's glm.fit()) -- now +/- working
 	* R/summary.q (summary.gl1ce):     R adaptions
 	* R/print.q (print.summary.gl1ce): R adaptions
-
-	* DESCRIPTION (Version): 1.0-1
-	  (as Berwin explained, "2" is no version number!)
 
 	* man/deviance.l1ce.Rd: and almost all (!!) others:
 	  added \keyword{}; added quite a few hyper \link{} s;
@@ -39,3 +79,329 @@
 	  fixed two severe `typos' :
 	   1) single-bound && something.to.sweep.out ("orig" shows)
 	   2) multibound case: `fit' was used before defined
+
+-----------------------------------------------------------------------------
+^^^^^^^^^  R Package
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------
+vvvvvvvvv  S-Plus library section
+-----------------------------------------------------------------------------
+
+
+Wed Dec  8 23:35:43 1999  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* First.lib.template: Changed to new release
+
+	* predict.q:
+	Modified predict.l1ce to support offset for predict.gl1ce.  Mimics
+	predict.{lm,glm} behaviour.
+
+	* l1ce.q, gl1ce.q: Changed some t(foo)%*%bar to crossprod(foo,bar).
+	Fixed a bug that appeared while playing around with update
+	(subscription error when putting end result together).
+
+Tue Nov 30 06:31:53 1999  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* summary.q: Added glm stuff.
+
+	* summary.gl1ce.d: Initial revision
+
+	* residuals.q: Added glm stuff.
+
+	* residuals.gl1ce.d, print.summary.gl1ce.d: Initial revision
+
+	* print.q: Added glm stuff.
+
+	* print.gl1ce.d: Initial revision
+
+	* predict.q: Added glm stuff.
+
+	* gl1ce.d, gl1ce.object.d, gl1ce.q, predict.gl1ce.d: Initial revision
+
+	* deviance.q: Added glm stuff.
+
+	* deviance.gl1ce.d: Initial revision
+
+Tue Nov 30 06:15:53 1999  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* vcov.q, residuals.q: Modified to make port to R easier.
+
+	* plot.q:
+	Added parameter `constrained'.  Modified to make port to R easier.
+
+	* plot.l1celist.d: Added documentation for additional parameter.
+
+	* misc.q: Added function `tr'. Modified to make port to R easier.
+
+	* l1ce.q, gcv.q, fitted.q, deviance.q:
+	Modified to make port to R easier.
+
+	* coef.q:
+	Added parameter `constrained'.  Modified to make port to R easier.
+
+	* coef.l1celist.d, coef.l1ce.d:
+	Added documentation for additional parameter.
+
+	* First.lib.template: Changed way of dynamic loading.
+
+Fri Dec 18 06:42:48 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* misc.q: Added tr() command.
+	(Arman Maghbouleh <arman@csli.stanford.edu> pointed out that it was
+	missing and is not in standard S-Plus.)
+
+	* tr.d: Initial revision
+
+Wed Nov  4 07:50:55 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* First.lib.template:
+	Changed release number to 1.2 and saved as snapshot.
+
+	* Finished the documentation and the manual.
+
+Sun Sep 27 02:02:02 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* summary.l1ce.d, l1ce.d, Prostate.d, Prostate.q:
+	Corrected spelling of prostate.
+
+Thu Sep 24 10:30:02 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* First.lib.template: Changed to Release 1.1 and saved as snapshot.
+
+	* l1ce.q:
+	If the object that is given down to "data" is not a data frame we now
+	try to coerce it into one.
+
+Wed Sep 23 10:22:23 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* l1ce.q:
+	Fixed a bug in l1ce in the case that a vector of bounds is given
+	(coefficients of swept out variables were not handled correctly).
+
+Sun Sep 20 09:44:18 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* First.lib.template: Changed to Release 1.0 and saved as snapshot.
+
+	* summary.l1ce.d, l1celist.object.d, l1ce.object.d, l1ce.d:
+	Initial revision
+
+Fri Sep 18 11:32:58 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* First.lib.template: Changed to Release 0.12 and saved as snapshot.
+
+	* [[.l1celist.d, aux.l1celist.d, aux.d, plot.l1celist.d, vcov.l1celist.d, vcov.l1ce.d, vcov.d, residuals.l1celist.d, residuals.l1ce.d, print.summary.l1ce.d, print.l1celist.d, print.l1ce.d, predict.l1ce.d, gcv.l1celist.d, gcv.l1ce.d, gcv.d, formula.l1celist.d, formula.l1ce.d, formula.q, labels.l1celist.d, labels.l1ce.d, labels.q, Prostrate.d, Prostrate.q, Iowa.q, Iowa.d, merge.formula.d, is.formula.d, fitted.l1celist.d, fitted.l1ce.d, deviance.l1celist.d, deviance.l1ce.d, coef.l1celist.d, coef.l1ce.d:
+	Initial revision
+
+Tue Sep 15 11:23:42 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* First.lib.template: Changed to Release 0.11 and saved as snapshot.
+
+	* l1ce.q:
+	The `contrasts' and `assign' result from model.matrix are now returned
+	as components of l1ce objects and attributes of l1celist objects.
+	(Analogous to what is found in lm.fit).
+
+Sun Sep 13 04:08:42 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* First.lib.template: Changed to Release 0.10 and saved as snapshot.
+
+	* vcov.q: Added check in `opt.covmat' whether `bound==0'.
+
+	* summary.q: Programmed and tested `summary.l1ce'.
+
+	* print.q: Added and tested `print.summary.l1ce'.
+
+	* gcv.q:
+	Made `gcv' a generic method.  Programmed and tested `gcv.l1ce' and
+	`gcv.l1celist'.
+
+	* summary.q: Initial revision
+
+Fri Sep 11 08:55:26 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* gcv.q: Initial revision
+
+Thu Sep 10 10:23:10 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* First.lib.template: Changed to Release 0.9 and saved as snapshot.
+
+	* l1ce.q:
+	The terms in the `formula' are calculated and given back too.  We need
+	those in the predict function.  Minor cosmetic changes to
+	error/warning messages.
+
+	* misc.q:
+	Corrected bug in transfer from attributes of objects of class l1celist
+	to components of objects of class l1ce.  Streamlines the code and
+	works also if new attributes/components are added.
+
+	* predict.q: Adapted from `predict.mlm'.  Programmed and tested.
+
+	* predict.q: Initial revision
+
+Wed Sep  9 11:26:54 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* First.lib.template: Changed to Release 0.8 and saved as snapshot.
+
+	* vcov.q: Fixed but in tib.covmat (didn't take absolute values).
+	Fixed typos in vcov.l1ce.  Added code that calculates the degrees of
+	freedom by calculating the trace of the "hat" matrix.  The parameter
+	s2hat was dropped, not the covaraince matrix is returned in a list as
+	`cov.unscaled' together with the degrees of freedom (`df', vector with
+	two values).
+	Programmed and debugged vcov.l1celist.
+
+Tue Sep  8 10:47:42 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* First.lib.template: Changed to Release 0.7 and saved as snapshot.
+
+	* vcov.q:
+	Programmed and tested `vcov.l1ce'.  Perhaps some thought is still
+	needed for a sensible default for the parameter `s2hat'.
+
+	* misc.q:
+	Changed `[.l1celist' and `[[.l1celist'' to take into account the
+	changes made to `l1ce' wrt parameters returned.
+
+	* l1ce.q: Added check whether a dataframe is given down.
+	Added check whether variables are left over after sweeping out.
+	Changed what values are returned, these changes were necessary in
+	order to be able to calculate the covariance matrix of the estimates.
+
+Mon Sep  7 07:18:08 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* First.lib.template: Changed to Release 0.6 and saved as snapshot.
+
+	* l1ce.q:
+	Changed X.to.C[,-name.matches] to X.to.C[,-name.matches,drop=F] so
+	that the result remains a matrix.  Explicitly added as.double() when
+	the guess for the constrained parameter is given down to C.  If a
+	vector of constraints is given, then the routine uses now
+	.C("mult_lasso") instead of repeated calls to .C("lasso") (saves
+	initialisation work in the C routine).
+
+	* deviance.q: Added `deviance.l1celist'.
+
+Sat Sep  5 06:49:59 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* First.lib.template: Changed to Release 0.5 and saved as snapshot.
+
+	* residuals.q: Added `residuals.l1celist'.
+
+	* print.q: Added `print.l1celist'.
+
+	* plot.q: Changed to make use of the methods `aux' and `coef'.
+
+	* misc.q:
+	Changed `[[.l1celist' such that indexes out of bounds are correctly
+	handled.  Added `[.l1celist' and `aux' as generic method.
+	`aux.l1celist' returns a matrix with the bounds (relative and
+	absolute) and the Lagrangians.
+
+	* l1ce.q: Renamed the parameter `constraint' to `bound'.
+
+	* fitted.q:
+	Added fitted.l1ce (practically fitted.default) and fitted.l1celist.
+
+	* coef.q: Added coef.l1celist.
+
+	* fitted.q: Initial revision
+
+Fri Sep  4 11:28:13 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* First.lib.template: Changed to Release 0.4 and saved as snapshot.
+
+	* misc.q: First go at the function, adapted from [[.times.
+
+	* print.q: Added constraint and Lagrangian to output.
+
+	* misc.q: Initial revision
+
+
+Fri Sep  4 10:30:26 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* vcov.q:
+	Preparation for implementing the vcov function.  Checked in in order
+	to rename all files from *.sf to *.q.
+
+	* plot.q: First go at plot.l1celist.
+
+	* l1ce.q:
+	Added the possibility that constraint is a vector.  In this case an
+	object of class "l1celist" is returned.
+
+	* vcov.q, plot.q: Initial revision
+
+Mon Aug 31 07:40:46 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* First.lib.template: Changed to Release 0.3 and saved as snapshot.
+
+	* l1ce.sf:
+	Renamed a variable from `m' to `p' so that it would not overwrite the
+	variable holding the information about the model.
+
+	* print.sf: Adapted from printed.lm, programmed and debugged.
+
+	* print.sf: Initial revision
+
+	* deviance.sf: Adapted from deviance.lm, programmed and debugged.
+
+	* l1ce.sf:
+	Renamed some components to have same names as in objects returned by
+	lm.
+
+	* coef.sf: Renamed beta to coefficients.
+
+	* deviance.sf: Initial revision
+
+	* l1ce.sf:
+	Corrected an error in the way the formula were handled (noticable when
+	weights were present).  Added heaps of bells and whistles.
+
+	* residuals.sf: Adapted from residuals.lm, programmed and debugged.
+
+Fri Aug 28 08:02:11 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* residuals.sf: Initial revision
+
+Sun Aug 16 02:50:33 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* First.lib.template: Changed to Release 0.2 and saved as snapshot.
+
+	* coef.l1ce.sf: Renamed  a parameter.
+
+	* l1ce.sf:
+	Corrected an error in the adjustment of the swept out parameters.
+
+Sun Aug 16 02:44:58 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* formula.util.sf:
+	Corrected merge.formula such that it handles long formulae correctly.
+	(deparse may return a *vector* of strings.)
+
+	* coef.l1ce.sf: Initial revision
+
+Tue Aug 11 06:15:18 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* l1ce.sf:
+	Complete rewrite to allow that several variables are swept out.
+
+	* formula.util.sf: Some changes to merge.formula
+
+	* formula.util.sf: Added merge.formula
+
+	* formula.util.sf: Initial revision
+
+Sun Aug  9 02:57:17 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* l1ce.sf: A first version.
+
+Fri Aug  7 03:19:47 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* l1ce.sf: Initial revision
+
+Fri Aug  7 02:57:41 1998  Berwin Turlach  <bturlach@stats.adelaide.edu.au>
+
+	* First.lib.template: Initial revision
+

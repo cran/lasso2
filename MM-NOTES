@@ -12,7 +12,7 @@ when first porting the Dec.1999 code from S-plus to R
 
 2) I think it's a waste of space to have the GPL statement in every file.
    Would like to have it only in very few places if not one ("COPYRIGHT")
-   alone.
+   alone {this is now done in many parts}.
 
 3) Most man/*.Rd needed \keyword{} added.
    (2.1-0 : many still need!)
@@ -44,6 +44,10 @@ when first porting the Dec.1999 code from S-plus to R
 7) man/*.Rd : There is now [Version 1.0-1, 2002-02-06] only one warning left :
 	    - about 3 undocumented objects:
 	      "force.loading" "opt.covmat"    "tib.covmat"
+
+   man/aux.*   are renamed to
+   man/zaux.*  since Brian Ripley remarked that filenames  AUX.*
+	       are close to invalid on Windows.
 
 8) I've started ./ChangeLog -- to document my changes a bit more
 	        ~~~~~~~~~~~

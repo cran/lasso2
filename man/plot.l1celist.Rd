@@ -10,7 +10,8 @@
    Plots a \code{l1celist} object on the current graphics device.
 }
 \usage{
-plot.l1celist(x, plot=TRUE, all=TRUE, constrained=FALSE, \dots)
+plot.l1celist(x, plot=TRUE, all=TRUE, constrained=FALSE,
+              type = "b", xlab = "bounds", ylab = "coeff | bounds", \dots)
 }
 \arguments{
   \item{x}{fitted model object of class \code{l1celist}.}
@@ -23,7 +24,8 @@ plot.l1celist(x, plot=TRUE, all=TRUE, constrained=FALSE, \dots)
   \item{constrained}{
     if \code{TRUE} then only the coefficients that were constrained
     are returned.}
- \item{\dots}{possibly further arguments (none at the moment).}
+ \item{type, xlab, ylab, \dots}{further arguments with useful defaults
+   passed to \code{\link{matplot}}.}
 }
 \value{
   A matrix with the bound(s) (relative [if used] and absolute),
@@ -36,4 +38,4 @@ length(l1c.P)# 20 l1ce models
 plot(l1c.P)
 }
 \keyword{hplot}
-% Converted by Sd2Rd version 1.21.
+

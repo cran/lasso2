@@ -90,6 +90,15 @@ gl1ce(formula, data = sys.parent(), weights, subset, na.action,
   an object of class \code{gl1ce} is returned.
   See \code{\link{gl1ce.object}} for details.
 }
+\references{
+  See the references in \code{\link{l1ce}}.
+
+  Justin Lokhorst (1999).
+  The LASSO and Generalised Linear Models,
+  Honors Project, Nov.1999, Dept.Statist., Univ. of Adelaide.
+  Available as file \file{Doc/justin.lokhorst.ps.gz} in both shar files
+  from \url{http://www.maths.uwa.edu.au/~berwin/software/lasso.html}.
+}
 \seealso{\code{\link{glm}} for unconstrained generalized regression
   modeling.
 }
