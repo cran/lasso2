@@ -1,3 +1,7 @@
+2003-12-29  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* man/coef.l1ce.Rd: do not \link{coef.default}
+
 2003-12-15  Martin Maechler  <maechler@stat.math.ethz.ch>
 
 	* R/formula.util.q (is.gEnv): new function, needed for testing

@@ -7,15 +7,13 @@
 \alias{coef.l1ce}
 \title{Coefficients of an `l1ce' Object}
 \usage{
-coef.l1ce(object, all=TRUE, constrained=FALSE, \dots)
+\method{coef}{l1ce}(object, all=TRUE, constrained=FALSE, \dots)
 }
 \description{
 %% For R >= 1.9.0, replace  \link{   by   \link[stats]{:
-  This is a method for the function \code{coef()} for objects inheriting from
-  class \code{l1ce}.
-  See \code{\link{coef}} or \code{\link{coef.default}} for
-  the general behavior of this function and for the interpretation of
-  \code{object}.
+  This is a method for \code{\link{coef}()} for objects inheriting from
+  class \code{l1ce}.  See \code{\link{coef}} for the general behavior of
+  this function and for the interpretation of \code{object}.
 }
 \arguments{
   \item{object}{an object of class \code{l1ce}, see help on

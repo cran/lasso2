@@ -7,15 +7,13 @@
 \alias{coef.l1celist}
 \title{Coefficients of an `l1celist' Object}
 \usage{
-coef.l1celist(object, all=TRUE, constrained=FALSE, \dots)
+\method{coef}{l1celist}(object, all=TRUE, constrained=FALSE, \dots)
 }
 \description{
 %% For R >= 1.9.0, replace  \link{   by   \link[stats]{:
   This is a method for \code{\link{coef}()} for objects inheriting from
-  class \code{l1ce}.
-  See \code{\link{coef}} or \code{\link{coef.default}} for
-  the general behavior of this function and for the interpretation of
-  \code{object}.
+  class \code{l1celist}.  See \code{\link{coef}} for the general behavior of
+  this function and for the interpretation of \code{object}.
 }
 \arguments{
   \item{object}{an object of class \code{l1celist}, see help on
