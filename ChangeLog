@@ -1,0 +1,41 @@
+2002-02-06  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* src/lasso.h: define macro Sprintf() = Rprintf() in R, else = printf()
+	* src/lasso.c: s/printf/Sprintf/
+
+	* R/gl1ce.q (gl1ce): replace as.family; use is.R() for R
+	differences (such that this still runs in S+ as before!).
+	s/check.vector/Cvector/ {readability}.
+	Many more (using R's glm.fit()) -- now +/- working
+	* R/summary.q (summary.gl1ce):     R adaptions
+	* R/print.q (print.summary.gl1ce): R adaptions
+
+	* DESCRIPTION (Version): 1.0-1
+	  (as Berwin explained, "2" is no version number!)
+
+	* man/deviance.l1ce.Rd: and almost all (!!) others:
+	  added \keyword{}; added quite a few hyper \link{} s;
+	  sometimes merged the almost identical *.l1ce and *.l1celist
+	  files; added missing argument lists; ....
+
+	* R/*.q: generic and methods *must* have maching argument lists!
+
+
+2002-02-05  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* pre-version (Version): 2.1-0 made available for Berwin to look
+	at.
+
+	* MM-NOTES: 1) - 7) explaining open questions
+
+
+2002-01-26  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* DESCRIPTION: a first unreleased version at least runs
+	  R CMD check to completion; still many warnings
+
+	* R/l1ce.q (l1ce): cosmetic;
+	  added qr.rtr.inv()  {and a note on why I think one should change..}
+	  fixed two severe `typos' :
+	   1) single-bound && something.to.sweep.out ("orig" shows)
+	   2) multibound case: `fit' was used before defined

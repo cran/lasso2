@@ -1,0 +1,24 @@
+R package "lasso2"
+==================
+
+I have ported these from the Dec.1999 version as available ( for S-plus )
+at  http://www.maths.uwa.edu.au/~berwin/software/lasso.html
+in order to use them for R.
+
+Berwin Turlach <himself> will probably take over maintenance of this
+package after while since "lasso2" is one of his ongoing research projects.
+
+See also
+    ./MM-NOTES
+    ./ChangeLog
+
+Feedback (by E-mail to me and or Berwin) is very welcome!
+
+--------
+
+Zurich, Feb.6, 2002
+
+Martin Maechler <maechler@stat.math.ethz.ch>	http://stat.ethz.ch/~maechler/
+Seminar fuer Statistik, ETH-Zentrum  LEO C16	Leonhardstr. 27
+ETH (Federal Inst. Technology)	8092 Zurich	SWITZERLAND
+phone: x-41-1-632-3408		fax: ...-1228			<><

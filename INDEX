@@ -1,0 +1,49 @@
+l1ce            Regression Fitting With L1-constraint on the Parameters
+gl1ce           Fit a generalized regression problem while
+                imposing an L1 constraint on the parameters
+
+[.l1celist               Subscript a `l1celist' Object
+aux                      Extract auxiliary information from an object.
+aux.l1celist             Use `aux()' on a `l1celist' object
+coef.l1ce                Coefficients of an `l1ce' Object
+coef.l1celist            Coefficients of an `l1celist' Object
+deviance.gl1ce           Use `deviance()' on a `gl1ce' object
+deviance.l1ce            Use `deviance()' on a `l1ce' object
+deviance.l1celist        Use `deviance()' on a `l1celist' object
+fitted.l1ce              Use `fitted()' on a `l1ce' object
+fitted.l1celist          Use `fitted()' on a `l1celist' object
+gcv                      Generalised cross-validation score
+gcv.l1ce                 Use `gcv()' on a `l1ce' object.
+gcv.l1celist             Use `gcv()' on a `l1celist' object.
+gl1ce.object             Generalized L1 Constrained Estimation Model Object
+is.formula               Tests for formula objects
+l1ce.object              L1 Constrainted Estimation Model Object
+l1celist.object          Object of Several L1 Constrained Estimation Models
+labels.l1ce              Use `labels()' on a `l1ce' object
+labels.l1celist          Use `labels()' on a `l1celist' object
+merge.formula            Merges a formula with the right hand side of a
+                         second formula. Support for Function `l1ce()'
+plot.l1celist            Plot a `l1celist' object
+predict.gl1ce            Use `predict()' on a `gl1ce' object
+predict.l1ce             Use `predict()' on a `l1ce' object
+print.gl1ce              Use `print()' on a `gl1ce' object
+print.l1ce               Use `print()' on a `l1ce' x
+print.l1celist           Use `print()' on a `l1celist' x
+print.summary.gl1ce      Use `print()' on a `summary.gl1ce' object
+print.summary.l1ce       Use `print()' on a `summary.l1ce' x
+residuals.gl1ce          Compute Residuals for `gl1ce' Objects
+residuals.l1ce           Use `residuals()' on a `l1ce' object
+residuals.l1celist       Use `residuals()' on a `l1celist' object
+summary.gl1ce            Summary Method for Generalized L1 Constrained
+                         Regression Models
+summary.l1ce             Summary Method for Regression Models with an L1
+                         constraint on the parameters.
+tr                       Trace of a Matrix
+vcov                     Variance-covariance matrix
+vcov.l1ce                Use `vcov()' on a `l1ce' object.
+vcov.l1celist            Use `vcov()' on a `l1celist' object.
+
+	Datasets
+
+Iowa                     The Iowa Wheat Yield Data
+Prostate                 Prostate Cancer Data

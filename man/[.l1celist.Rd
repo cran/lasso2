@@ -1,0 +1,45 @@
+% Copyright (C) 1998
+% Berwin A. Turlach <bturlach@stats.adelaide.edu.au>
+% Bill Venables <wvenable@stats.adelaide.edu.au>
+% $Id: [[.l1celist.d,v 1.1 1998/09/18 11:23:09 bturlach Exp $
+%
+% This library is free software; you can redistribute it and/or
+% modify it under the terms of the GNU Library General Public
+% License as published by the Free Software Foundation; either
+% version 2 of the License, or (at your option) any later version.
+%
+% This library is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+% Library General Public License for more details.
+%
+% You should have received a copy of the GNU Library General Public
+% License along with this library; if not, write to the Free Software
+% Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+% MA 02111-1307 USA
+\name{[.l1celist}
+\alias{[.l1celist}
+\alias{[[.l1celist}
+\title{Subscript a `l1celist' Object}
+\description{
+  Allows the user to extract values from a \code{l1celist} object by using
+  subscripts.
+}
+\usage{
+x[i, drop]
+x[[i]]
+}
+\arguments{
+  \item{x}{an object inheriting from class \code{"l1celist"}.}
+  \item{i}{subscripts applying to elements (fitted models) in the list.}
+  \item{drop}{logical defaulting to \code{TRUE}.  If only one model is
+    subscribed, then it is returned as an object of class \code{"l1ce"}.
+    If \code{drop=F}, then an object of class \code{"l1celist"} is
+    always returned.}
+}
+\value{
+  an object of class \code{"l1celist"} or class \code{"l1ce"}
+  extracted from the original list.
+}
+\keyword{manip}
+% Converted by Sd2Rd version 1.21.

@@ -1,0 +1,54 @@
+------------------------------------------------------------
+Remarks by Martin Maechler, Jan.-Feb.2002,
+when first porting the Dec.1999 code from S-plus to R
+------------------------------------------------------------
+
+1) Question about naming :
+
+	 Lasso2/Doc/Manual.ps
+	 clearly talks about "Lasso2 : A S-PLUS library ...."
+   As Berwin explained my, "2" is not a version number, and hence we won't
+   have lasso3, hence we keep it (lower case).
+
+2) I think it's a waste of space to have the GPL statement in every file.
+   Would like to have it only in very few places if not one ("COPYRIGHT")
+   alone.
+
+3) Most man/*.Rd needed \keyword{} added.
+   (2.1-0 : many still need!)
+
+4) src/lasso.c and lasso.h
+   -----------
+ a) has many printf() -- this is not ok in R (think of Win Rgui);
+     in R we have Rprintf() {and REprintf()} etc.
+ b) contains its own QR code ( = last third of lasso.c)
+    this is `bad' since we would rather want to use
+	 LAPACK which might available in a much faster optimized version.
+    I'd rather separate this part out.
+ c) I've  replaced `long' by `Sint' and
+    in lasso.h defined Sint (as include <R.h> would for R)
+    IMPORTANT: replaced S_Plus by S_or_R  (both lasso.h & lasso.c)
+	                ~~~~~~    ~~~~~~  ==> Berwin: change lasso.nw !
+
+5) R/l1ce.q : (line 267) : I had to add " <- X.to.C.stds "; the
+   if( standardize ) clause wouldn't have made sense otherwise!
+
+  5b) similar bug fix in R/gl1ce.q
+
+6) vcov() --- same as vcov() in MASS  (but ..)
+	  --- or should we require MASS since that is now recommended, i.e.
+	      available wherever R is.
+
+	  --- or should  "base R" define the vcov(.) generic ?
+
+7) man/*.Rd : There is now [Version 1.0-1, 2002-02-06] only one warning left :
+	    - about 3 undocumented objects:
+	      "force.loading" "opt.covmat"    "tib.covmat"
+
+8) I've started ./ChangeLog -- to document my changes a bit more
+	        ~~~~~~~~~~~
+
+Martin Maechler <maechler@stat.math.ethz.ch>	http://stat.ethz.ch/~maechler/
+Seminar fuer Statistik, ETH-Zentrum  LEO C16	Leonhardstr. 27
+ETH (Federal Inst. Technology)	8092 Zurich	SWITZERLAND
+phone: x-41-1-632-3408		fax: ...-1228			<><
