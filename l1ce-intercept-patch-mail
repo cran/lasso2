@@ -1,3 +1,202 @@
+From berwin@maths.uwa.edu.au  Mon Apr 12 04:51:06 2004
+X-VM-v5-Data: ([nil nil nil nil nil nil nil nil nil]
+	["18691" "Monday" "12" "April" "2004" "10:51:00" "+0800" "Berwin A Turlach" "berwin@maths.uwa.edu.au" "<16506.1044.155769.557937@bossiaea.maths.uwa.edu.au>" "490" "Re: [R] Intercept in lasso models" "^From:" nil nil "4" "2004041204:51:00" "[R] Intercept in lasso models" nil "<opr6a4omv5jigwsf@mail.ist.org>" ("<opr6a4omv5jigwsf@mail.ist.org>") nil nil nil nil]
+	nil)
+Return-Path: <berwin@maths.uwa.edu.au>
+Received: from asclepius.uwa.edu.au (asclepius.uwa.edu.au [130.95.128.56])
+	by hypatia.math.ethz.ch (8.12.11/8.12.11) with ESMTP id i3C2p3hm003865
+	for <maechler@stat.math.ethz.ch>; Mon, 12 Apr 2004 04:51:04 +0200
+Received: from 127.0.0.1 (localhost [127.0.0.1])
+	by dummy.domain.name (Postfix) with SMTP id AAA7F367416
+	for <maechler@stat.math.ethz.ch>; Mon, 12 Apr 2004 10:51:02 +0800 (WST)
+Received: from madvax (madvax.maths.uwa.edu.au [130.95.16.119])
+	by asclepius.uwa.edu.au (Postfix) with ESMTP id 933293673F1
+	for <maechler@stat.math.ethz.ch>; Mon, 12 Apr 2004 10:51:02 +0800 (WST)
+Received: from bossiaea.maths.uwa.edu.au ([130.95.16.156] ident=mail)
+	by madvax with esmtp (Exim 4.30)
+	id 1BCrXI-00061N-P3; Mon, 12 Apr 2004 10:51:00 +0800
+Received: from berwin by bossiaea.maths.uwa.edu.au with local (Exim 3.36 #1 (Debian))
+	id 1BCrXI-00084V-00; Mon, 12 Apr 2004 10:51:00 +0800
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="DlA4Bmox1U"
+Content-Transfer-Encoding: 7bit
+Message-ID: <16506.1044.155769.557937@bossiaea.maths.uwa.edu.au>
+In-Reply-To: <opr6a4omv5jigwsf@mail.ist.org>
+References: <opr6a4omv5jigwsf@mail.ist.org>
+X-Mailer: VM 7.18 under Emacs 21.3.1
+X-Virus-Scanned: by amavisd-new
+X-Spam-Checker-Version: SpamAssassin 2.63 (2004-01-11) on hypatia.math.ethz.ch
+X-Spam-Level: 
+X-Spam-Status: No, hits=-0.9 required=5.0 tests=AWL autolearn=no version=2.63
+From: Berwin A Turlach <berwin@maths.uwa.edu.au>
+To: Martin Keller-Ressel <martin@ist.org>
+Cc: Martin Maechler <maechler@stat.math.ethz.ch>
+Subject: Re: [R] Intercept in lasso models
+Date: Mon, 12 Apr 2004 10:51:00 +0800
+
+
+--DlA4Bmox1U
+Content-Type: text/plain; charset=us-ascii
+Content-Description: message body text
+Content-Transfer-Encoding: 7bit
+
+>>>>> "MKR" == Martin Keller-Ressel <martin@ist.org> writes:
+
+(Martin: This problem is easily fixed.  Below I attach a corrected
+l1ce.q file.  I would appreciate it if you put it into lasso2 and
+release a new version.  Thanks.)
+
+    MKR> Im using the function l1ce (L1-constrained estimation) from
+    MKR> the lasso2 package.  when I try the example from the help
+    MKR> pages [...]
+This looks somewhat familiar.  An early version of the S-Plus library
+(never released) did something similar.  Essentially, if several
+bounds were used, parameter estimates that were not restricted got too
+often corrected.  But when that bug was fixed, a bug was introduced in
+the part of the code that is run if a single bound is specified---and
+S-Plus library was released with the bug in the single bound routine.
+
+Seems as if during the port to R the latter bug was fixed on the cost
+of introducing the original one again. :-)
+
+Below I attach a patch that should fix the problem.  Unpack the
+sources for the lasso2 package, apply the patch to l1ce.q (in
+lasso2/R) and then install the package from source.  
+
+If the above paragraph is "chinese" for you :), I also attach a
+version of l1ce.q.  Just source it so that you have a local version of
+l1ce.q in your workspace which will override the one in the package.
+
+With this patched version, your example works for me:
+
+> library(lasso2)
+R Package to solve regression problems while imposing
+	 an L1 constraint on the parameters. Based on S-plus Release 2.1
+Copyright (C) 1998, 1999
+Justin Lokhorst   <jlokhors@stats.adelaide.edu.au>
+Berwin A. Turlach <bturlach@stats.adelaide.edu.au>
+Bill Venables     <wvenable@stats.adelaide.edu.au>
+
+Copyright (C) 2002
+Martin Maechler <maechler@stat.math.ethz.ch>
+
+> data(Prostate)
+> l1c.P <- l1ce(lpsa ~ ., Prostate, bound=.5)
+> coef(l1c.P)
+ (Intercept)       lcavol      lweight          age         lbph          svi 
+0.7284810757 0.4936540169 0.2681863403 0.0000000000 0.0092825881 0.4550584943 
+         lcp      gleason        pgg45 
+0.0000000000 0.0000000000 0.0001812107 
+> l1c.P <- l1ce(lpsa ~ ., Prostate, bound=(1:20)/20)
+> coef(l1c.P)[10,]
+ (Intercept)       lcavol      lweight          age         lbph          svi 
+0.7284810757 0.4936540169 0.2681863403 0.0000000000 0.0092825881 0.4550584943 
+         lcp      gleason        pgg45 
+0.0000000000 0.0000000000 0.0001812107 
+> coef(l1c.P)[20,]
+ (Intercept)       lcavol      lweight          age         lbph          svi 
+ 0.669399027  0.587022881  0.454460641 -0.019637208  0.107054351  0.766155885 
+         lcp      gleason        pgg45 
+-0.105473570  0.045135964  0.004525324 
+> coef(lm(lpsa ~ ., data = Prostate))
+ (Intercept)       lcavol      lweight          age         lbph          svi 
+ 0.669399027  0.587022881  0.454460641 -0.019637208  0.107054351  0.766155885 
+         lcp      gleason        pgg45 
+-0.105473570  0.045135964  0.004525324 
+
+Hope this helps.  Thanks for pointing the problem out to us.
+
+Best wishes,
+
+     Berwin
+
+
+--DlA4Bmox1U
+Content-Type: text/plain
+Content-Description: patch file
+Content-Disposition: inline;
+	filename="patch"
+Content-Transfer-Encoding: 7bit
+
+*** l1ce.q.01	Mon Apr  8 17:36:28 2002
+--- l1ce.q	Mon Apr 12 10:30:33 2004
+***************
+*** 90,96 ****
+          if( X.so.qr$rank != ncol(X.sweep.out) )
+              warning("Matrix built from variables in `sweep.out' is rank deficient")
+  
+!         X.so.coef  <- qr.coef  (X.so.qr, Y.to.C)
+          X.so.X     <- qr.coef  (X.so.qr, X.to.C)
+          X.so.Y.fit <- qr.fitted(X.so.qr, Y.to.C)
+          X.to.C     <- qr.resid (X.so.qr, X.to.C)
+--- 90,96 ----
+          if( X.so.qr$rank != ncol(X.sweep.out) )
+              warning("Matrix built from variables in `sweep.out' is rank deficient")
+  
+!         X.so.coefficients  <- qr.coef  (X.so.qr, Y.to.C)
+          X.so.X     <- qr.coef  (X.so.qr, X.to.C)
+          X.so.Y.fit <- qr.fitted(X.so.qr, Y.to.C)
+          X.to.C     <- qr.resid (X.so.qr, X.to.C)
+***************
+*** 166,181 ****
+  
+          if(something.to.sweep.out) {
+              fit$fitted.values <- fit$fitted.values + X.so.Y.fit
+!             X.so.coef <- X.so.coef - X.so.X %*% fit$coefficients
+  
+              tmp <- fit$coefficients
+              fit$coefficients <- rep(0,ncol(X))
+              names(fit$coefficients) <- dimnames(X)[[2]]
+              fit$coefficients[X.names] <- tmp
+!             names(X.so.coef) <- X.sweep.out.names
+              ind <- names(fit$coefficients[name.matches])
+              ##orig 1999 code : fit$coefficients[name.matches] <- X.so.coeff[ind]
+!             fit$coefficients[name.matches] <- X.so.coef[ind]
+  
+              fit$sweep.out <- list(sweep.out = sweep.out,
+                                    X.sweep.out.names = X.sweep.out.names,
+--- 166,181 ----
+  
+          if(something.to.sweep.out) {
+              fit$fitted.values <- fit$fitted.values + X.so.Y.fit
+!             X.so.coefficients <- X.so.coefficients - X.so.X %*% fit$coefficients
+  
+              tmp <- fit$coefficients
+              fit$coefficients <- rep(0,ncol(X))
+              names(fit$coefficients) <- dimnames(X)[[2]]
+              fit$coefficients[X.names] <- tmp
+!             names(X.so.coefficients) <- X.sweep.out.names
+              ind <- names(fit$coefficients[name.matches])
+              ##orig 1999 code : fit$coefficients[name.matches] <- X.so.coeff[ind]
+!             fit$coefficients[name.matches] <- X.so.coefficients[ind]
+  
+              fit$sweep.out <- list(sweep.out = sweep.out,
+                                    X.sweep.out.names = X.sweep.out.names,
+***************
+*** 255,261 ****
+  
+              if(something.to.sweep.out) {
+                  fit$fitted.values <- fit$fitted.values + X.so.Y.fit
+!                 X.so.coef <- X.so.coef - X.so.X %*% fit$coefficients
+  
+                  tmp <- fit$coefficients
+                  fit$coefficients <- rep(0,ncol(X))
+--- 255,261 ----
+  
+              if(something.to.sweep.out) {
+                  fit$fitted.values <- fit$fitted.values + X.so.Y.fit
+!                 X.so.coef <- X.so.coefficients - X.so.X %*% fit$coefficients
+  
+                  tmp <- fit$coefficients
+                  fit$coefficients <- rep(0,ncol(X))
+
+--DlA4Bmox1U
+Content-Type: text/plain
+Content-Description: patched l1ce.q 
+Content-Disposition: inline;
+	filename="l1ce.q"
+Content-Transfer-Encoding: 7bit
+
 ###  Copyright (C) 1998
 ###  Berwin A. Turlach <bturlach@stats.adelaide.edu.au>
 ###  Bill Venables <wvenable@stats.adelaide.edu.au>
@@ -308,3 +507,21 @@ l1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
                   na.message = attr(m, "na.message"))
     }## multi-bound case
 }
+
+--DlA4Bmox1U
+Content-Type: text/plain; charset=us-ascii
+Content-Description: message body text
+Content-Transfer-Encoding: 7bit
+
+
+
+========================== Full address ============================
+Berwin A Turlach                      Tel.: +61 (8) 6488 3338 (secr)   
+School of Mathematics and Statistics        +61 (8) 6488 3383 (self)      
+The University of Western Australia   FAX : +61 (8) 6488 1028
+35 Stirling Highway                   
+Crawley WA 6009                e-mail: berwin@maths.uwa.edu.au
+Australia                        http://www.maths.uwa.edu.au/~berwin
+
+--DlA4Bmox1U--
+

@@ -1,3 +1,12 @@
+2004-04-13  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* DESCRIPTION (Version, Date): 1.2-0
+
+	* R/l1ce.q: fix intercepts for multi-bound situation
+	            (reported by Martin Keller-Ressel).
+	* tests/l1ce-tst.Rout.save: modified correspondingly and for :
+	* tests/l1ce-tst.R: new consistency test (for the above problem)
+
 2004-02-05  Martin Maechler  <maechler@stat.math.ethz.ch>
 
 	* DESCRIPTION (Version): 1.1-0

@@ -13,6 +13,14 @@ print(plot(l1c.liI))
 data(Prostate)
 l1c.P <- l1ce(lpsa ~ ., Prostate, bound= seq(0,1, len= 17))
 print(plot(l1c.P))
+## test  multi-/single- bound problem:
+l1c.P.25 <- l1ce(lpsa ~ ., Prostate, bound= 0.25)# 0.25 is nr. [5] above
+l1c.P.1 <-  l1ce(lpsa ~ ., Prostate, bound= 1)
+lm.P     <- lm  (lpsa ~ ., Prostate)
+stopifnot(all.equal(coef(l1c.P.25), coef(l1c.P)[ 5,], tol= 1e-15),
+          all.equal(coef(l1c.P.1 ), coef(l1c.P)[17,], tol= 1e-15),
+          all.equal(coef(lm.P),     coef(l1c.P.1),    tol= 1e-14)
+          )
 
 ###-------- Try a case where p > n :
 n <- 100
