@@ -1,4 +1,28 @@
+2004-02-05  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* DESCRIPTION (Version): 1.1-0
+
+	* R/summary.q (summary.gl1ce): $coefficients should be "usual"
+	matrix, not a 1-dim array. {The docs do not talk about it.}
+	* R/print.q (print.summary.gl1ce): coefficients; also visualize '0'!
+
+	* R/predict.q (predict.gl1ce): type = "response": fix R port
+	* R/gl1ce.q (family.gl1ce): new method
+	* man/gl1ce.Rd: and docu
+
+	* man/predict.gl1ce.Rd: add \examples{}
+
+	* man/residuals.gl1ce.Rd: \seealso{} + cosmetic
+
+2004-02-05  Berwin Turlach <berwin@maths.uwa.edu.au>
+
+	* R/gl1ce.q (gl1ce): bug fixes (3 places), particularly fitted values.
+
 2003-12-29  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* DESCRIPTION (Version): 1.0-4
+
+	* src/lasso.c : get rid of 3 minor compiler warnings
 
 	* man/coef.l1ce.Rd: do not \link{coef.default}
 

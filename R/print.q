@@ -169,8 +169,11 @@ print.summary.gl1ce <-
       names(rq) <- qnam
   }
   print(rq, digits = digits, ...)
+
+  ccf <- format(round(x$coeff, digits = digits))
+  ccf[x$coeff == 0.] <- "0" # visualize exact zeroes
   cat("\nCoefficients\n")
-  print(format(round(t(x$coeff), digits = digits)), quote = FALSE, ...)
+  print(ccf, quote = FALSE, ...)
 
   cat("\nFamily:\n")
   print(x$family, ...)

@@ -38,8 +38,22 @@
   \code{predict} can produce incorrect predictions when the \code{newdata}
   argument is used if the formula in \code{object} involves
   data-dependent transformations, such as \code{poly(Age, 3)}
-  or \code{sqrt(Age - min(Age))}.
 %% MM: this was for S-plus -- which has such problems with glm() -- maybe not R
+  or \code{sqrt(Age - min(Age))}.
+}
+\examples{
+  ## start with
+  example(gl1ce)
+  predict(gl1c.E, new = esoph[1:7,])# type 'link'
+  predict(gl1c.E, new = esoph[1:7,], type = "response")
+
+  ## identities / consistency checks :
+  stopifnot(predict(gl1c.E, type = "response") == fitted(gl1c.E),
+            all.equal(predict(gl1c.E)[1:7],
+                      predict(gl1c.E, new = esoph[1:7,])),
+            all.equal(fitted(gl1c.E)[1:7],
+                      predict(gl1c.E, new = esoph[1:7,], type = "response"))
+           )
 }
 \keyword{models}
 

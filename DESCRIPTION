@@ -1,6 +1,6 @@
 Package: lasso2
-Version: 1.0-4
-Date: 2003-12-29
+Version: 1.1-0
+Date: 2004-02-05
 Author: Justin Lokhorst, Bill Venables and
   Berwin Turlach <berwin@maths.uwa.edu.au>; first port to R: Martin Maechler
 Maintainer: Martin Maechler <maechler@stat.math.ethz.ch>
@@ -11,4 +11,4 @@ Description: Routines and documentation for solving regression problems
 Depends:
 License: GPL version 2 or later
 URL: http://www.maths.uwa.edu.au/~berwin/software/lasso.html
-Packaged: Mon Dec 29 23:37:09 2003; maechler
+Packaged: Thu Feb  5 10:52:00 2004; maechler

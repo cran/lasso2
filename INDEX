@@ -28,7 +28,6 @@ summary.gl1ce		Summary Method for Generalized L1 Constrained
 summary.l1ce		Summary Method for ``l1ce'' Objects (Regression
 			with L1 Constraint)
 tr			Trace of a Matrix
-vcov			Variance-Covariance Matrix
 vcov.l1ce		Variance-Covariance Matrix of `l1ce' or
 			`l1celist' Objects
 aux			Extract auxiliary information from an object.

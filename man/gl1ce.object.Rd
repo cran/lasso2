@@ -30,15 +30,15 @@ If you need residuals that all have the same variance, then use the
 \code{residuals} function with \code{type="pearson"}.
 }
 \item{fitted.values}{
-the fitted values from the fit.
-If weights were used, the fitted values are not adjusted for the weights.
+  the fitted values from the fit.  If weights were used, the fitted
+  values are not adjusted for the weights.
 }
 \item{family}{
-the family of which the fitted regression model belongs, eg.,
-binomial(link=probit)
+  the family of which the fitted regression model belongs, eg.,
+  \code{\link{binomial}(link=probit)}.
 }
 \item{bound}{
-the (absolute) L1 constraint imposed on the parameters.
+  the (absolute) L1 constraint imposed on the parameters.
 }
 \item{Lagrangian}{
 the value of the Lagrangian that enforces the constraint at the solution.

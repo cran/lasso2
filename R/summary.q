@@ -28,7 +28,7 @@ summary.l1ce <- function(object,
   coef <- coef(object)
   cnames <- labels(coef)
   resid <- resid(object)
-  fv <- fitted(object)
+  ## fv <- fitted(object)
 
   covdf <- vcov(object,type,gen.inverse.diag)
   sigma.provided <- !missing(sigma)
@@ -72,20 +72,13 @@ summary.gl1ce <- function(object, dispersion = NULL, correlation=FALSE, ...)
   coef <- coef(object)
   if(is.null(cnames <- names(coef)))
       cnames <- c("(Intercept)", labels(object))
-  resid <- residuals(object, type="deviance")
-  fv <- fitted(object)
-  family <- object$family
-  iter <- object$iter
-  coef <- array(coef, length(coef))
-  dimnames(coef) <- list(cnames)
+  names(coef) <- cnames
+  coef <- cbind(Value = coef)# same matrix structure for consistency
 
-  keep <- c("call", "terms", "bound", "Lagrangian")
-  object <- object[keep[!is.na(match(keep, names(object)))]]
-  object$residuals <- resid
-  object$coefficients <- coef
-  object$family <- family
-  object$iter <- iter
+  keep <- c("call", "terms", "bound", "Lagrangian", "family", "iter")
+  object <- c(object[keep[!is.na(match(keep, names(object)))]],
+              list(residuals = residuals(object, type="deviance"),
+                   coefficients = coef))
   class(object) <- "summary.gl1ce"
-
   object
 }

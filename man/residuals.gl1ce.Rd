@@ -28,13 +28,16 @@
   add up to the deviance.  The pearson residuals are standardized residuals on
   the scale of the response.  The  working residuals reside on the
   object, and are the residuals from the final fit. The response residuals are
-  simply  y-fitted(object).  The summary() method for \code{gl1ce}
-  objects produces deviance residuals.  The residuals component of a
-  \code{gl1ce} object contains the working residuals.
+  simply  \code{y - fitted(object)}.  The \code{summary()} method for
+  \code{gl1ce} objects produces deviance residuals.  The residuals
+  component of a \code{gl1ce} object contains the working residuals.
 }
 \references{
   Chambers,  J.M.,  and  Hastie,  T.J.  (1991).  Statistical Models in S,
   pp. 204--206.
+}
+\seealso{\code{\link{gl1ce}} for examples;
+  \code{\link{fitted.l1ce}} is used for fitted values.
 }
 \keyword{models}
 % Converted by Sd2Rd version 1.21.

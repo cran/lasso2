@@ -213,12 +213,16 @@ gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
 
     guess.constrained.coefficients <- gamma <- fit$coefficients
 
-    Cvector <-
-        if(something.to.sweep.out) c(X.so.coefficients, gamma) else gamma
+    if(something.to.sweep.out){
+      Cvector <- c(X.so.coefficients, gamma)
+      eta <- as.vector((X.to.C.w %*% gamma + X.sweep.out.w %*%
+                        X.so.coefficients)/W)
+    }else{
+      Cvector <- c(gamma)
+      eta <- as.vector((X.to.C.w %*% gamma)/W)
+    }
 
-    eta <- as.vector((X.to.C.w %*% gamma + X.sweep.out.w %*%
-                      X.so.coefficients)/W)
-    mu <- inv.link(eta + offset) ## Our new values of mu and eta
+    fit$fitted.values <- mu <- inv.link(eta + offset) ## Our new values of mu and eta
 
     j <- j + 1
 
@@ -251,9 +255,7 @@ gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
     fit$coefficients <- fit$coefficients/X.to.C.stds
   }
   if(something.to.sweep.out) {
-    X.so.X <- qr.coef(X.so.qr, X.to.C)
-    X.so.Y.fit <- qr.fitted(X.so.qr, Y.to.C)
-    fit$fitted.values <- fit$fitted.values + X.so.Y.fit
+    X.so.X <- qr.coef(X.so.qr, X.to.C*W)
     X.so.coefficients <- X.so.coefficients - X.so.X %*% fit$coefficients
     tmp <- fit$coefficients
     fit$coefficients <- rep(0, ncol(X))
@@ -284,3 +286,6 @@ gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
   structure(fit, class = c("gl1ce", "l1ce"),
             na.message = attr(mf, "na.message"))
 }
+
+## trivial accessor function:
+family.gl1ce <- function (object, ...) object$family

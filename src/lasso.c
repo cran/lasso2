@@ -364,11 +364,12 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
   for(j=0;j<num_nz_x;j++)
     b_1norm += fabs(beta[nz_x[j]]);
 #line 461 "genlasso.nw"
-  if(verb)
-    if(b_1norm < (1-prec)*t)
-      Sprintf(", and stepping into the interior of the L1 ball\n");
-    else
-      Sprintf("\n");
+  if(verb) {
+      if(b_1norm < (1-prec)*t)
+	  Sprintf(", and stepping into the interior of the L1 ball\n");
+      else
+	  Sprintf("\n");
+  }
 #line 392 "genlasso.nw"
     }
   }
@@ -515,7 +516,8 @@ void mult_lasso(double *x, Sint *pn, Sint *pm, double *pt, Sint *pl,
 
 #line 658 "genlasso.nw"
   double prec;
-  Sint n = *pn, m = *pm, l = *pl, verb = *pverb, as_sub = TRUE, i, j;
+  Sint n = *pn, m = *pm, l = *pl, verb = *pverb, as_sub = TRUE;
+  int i, j;
 #line 638 "genlasso.nw"
   lasso_alloc(n,m);
 
@@ -539,7 +541,7 @@ for(j=0; j<m; j++){
 #line 690 "genlasso.nw"
 if(verb){
   Sprintf("\n\n++++++++++++++++++++++++++++++\n");
-  Sprintf("Solving problem number %ld with bound %f\n", i+1, pt[i]);
+  Sprintf("Solving problem number %d with bound %f\n", i+1, pt[i]);
   Sprintf("++++++++++++++++++++++++++++++\n");
 }
 if(i>0) Memcpy(beta,beta-m,m);
@@ -668,12 +670,12 @@ static void qr_del(int l, int aug) {
   if( l<0 || l>=r_ncol )
     ERRMSG("qr_del", "Invalid column number");
   r_ncol--;
-  if( l==r_ncol)
-    if( aug )
-      ERRMSG("qr_del", "Trying to delete last column of augmented matrix");
-    else
-      return;
-
+  if(l == r_ncol) {
+      if( aug )
+	  ERRMSG("qr_del", "Trying to delete last column of augmented matrix");
+      else
+	  return;
+  }
   /* this is TRUE if $m\le n$ ($m-1\le n$ if the matrix is augmented) */
   if ( r_ncol < q_nrow ){
     for(k=l; k<r_ncol; k++) /* Update the factorisation and be done */

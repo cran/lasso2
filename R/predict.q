@@ -82,7 +82,10 @@ predict.gl1ce <-
                    response = object$fitted)
         } else {
             switch(type,
-                   response = family(object)$inverse(NextMethod("predict")),
+                   response = {
+                       linkinv <- family(object)[[if(is.R())"linkinv" else "inverse"]]
+                       linkinv(NextMethod("predict"))
+                   },
                    link = {
                        type <- "response"
                        NextMethod("predict")

@@ -1,5 +1,6 @@
 \name{gl1ce}
 \alias{gl1ce}
+\alias{family.gl1ce}
 \title{Generalized Regression With L1-constraint on the Parameters}
 }
 \description{
@@ -11,6 +12,7 @@ gl1ce(formula, data = sys.parent(), weights, subset, na.action,
       family = gaussian, control = glm.control(\dots), sweep.out = ~ 1,
       x = FALSE, y = TRUE, contrasts = NULL, standardize = TRUE,
       guess.constrained.coefficients = double(p), bound = 0.5, \dots)
+\method{family}{gl1ce}(object, \dots)
 }
 \arguments{
   \item{formula}{a \code{\link{formula}}, with the response on the left
@@ -85,9 +87,10 @@ gl1ce(formula, data = sys.parent(), weights, subset, na.action,
     constraint(s) that is/are put onto the L1 norm of the parameters.}
   \item{\dots}{potential arguments for \code{\link[base]{glm.control}},
     as default for the \code{control} argument above.}
+  \item{object}{an \R object of class \code{"gl1ce"}.}
 }% args
 \value{
-  an object of class \code{gl1ce} is returned.
+  an object of class \code{gl1ce} is returned by \code{gl1ce()}.
   See \code{\link{gl1ce.object}} for details.
 }
 \references{
@@ -115,6 +118,12 @@ plot(residuals(gl1c.E) ~ fitted(gl1c.E))
 
 sg1c <- summary(gl1c.E)
 sg1c
+
+## Another comparison  glm() / gl1c.E:
+plot(predict(glm.E,  type="link"), predict(glm.E,  type="response"),
+     xlim = c(-3,0))
+points(predict(gl1c.E, type="link"), predict(gl1c.E, type="response"),
+       col = 2, cex = 1.5)
 
 %%% mabye FIXME!!
 labels(gl1c.E)#-- oops! empty!!
