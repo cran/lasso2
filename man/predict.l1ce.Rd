@@ -21,16 +21,17 @@
 \alias{predict.l1ce}
 \title{Predict Method for `l1ce' Objects}
 \description{
-Extracts the fitted values from a \code{l1ce} object and returns a matrix of
-predictions.
+  This is a method for the generic function \code{\link{predict}}
+  for class \code{"l1ce"}, typically produced from
+  \code{\link{l1ce}()}.  When \code{newdata} is missing, the
+  fitted values are extracted, otherwise returns \emph{new} predictions.
 }
 \usage{
-predict.l1ce(object, newdata, type=c("response"), se.fit = FALSE, \dots)
+\method{predict}{l1ce}(object, newdata,
+           type = c("response"), se.fit = FALSE, \dots)
 }
 \arguments{
-  \item{object}{
-    a fitted \code{l1ce} object.
-  }
+  \item{object}{a fitted \code{l1ce} object.  }
   \item{newdata}{
     a data frame containing the values at which predictions are required.
     This argument can be missing, in which case predictions are made at
@@ -45,15 +46,22 @@ predict.l1ce(object, newdata, type=c("response"), se.fit = FALSE, \dots)
 \value{
   a vector of predictions.
 }
-\details{
-This function is a method for the generic function \code{\link{predict}}
-for  class \code{"l1ce"}.   It can be invoked by calling predict
-for an object of the appropriate  class,  or  directly  by
-calling  predict.l1ce  regardless  of the class of the object.
-}
 \section{Warning}{
-\code{predict} can produce incorrect predictions when the \code{newdata}
-argument is used if the formula in \code{object} involves
-transformations, such as \code{poly(Age, 3)} or \code{sqrt(Age - min(Age))}.
+  \code{predict} can produce incorrect predictions when the \code{newdata}
+  argument is used if the formula in \code{object} involves
+  transformations, such as \code{poly(Age, 3)} or \code{sqrt(Age - min(Age))}.
+
+  MM: Not sure this is true for \R \ldots.
+}
+\examples{
+data(Iowa)
+l1c.I <- l1ce(Yield ~ ., Iowa, bound = 10, absolute.t=TRUE)
+p10 <- predict(l1c.I, newdata =   Iowa[10:19,])
+stopifnot(all.equal(p10, fitted(l1c.I)[10:19]))
 }
 \keyword{models}
+
+
+
+
+

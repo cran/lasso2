@@ -3,7 +3,8 @@
 ###  Bill Venables <wvenable@stats.adelaide.edu.au>
 ### --> ../COPYRIGHT for more details
 
-###--  vcov() is in MASS as well -- this generic is compatible :
+###--  vcov() is in base since 1.6.x :
+if(paste(R.version$major, R.version$minor, sep=".") < 1.6)
 vcov <- function(object, ...) UseMethod("vcov")
 
 vcov.l1ce <- function(object, type = c("OPT", "Tibshirani"),

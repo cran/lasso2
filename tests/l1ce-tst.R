@@ -6,6 +6,7 @@ data(Iowa)
 
 l1c.I <- l1ce(Yield ~ ., Iowa, bound = 10, trace = TRUE, absolute.t=TRUE)
 
+## the next ones give a l1ce LIST (one for each bound)
 l1c.liI <- l1ce(Yield ~ ., Iowa, bound = seq(0,1, len= 17))
 print(plot(l1c.liI))
 
@@ -17,13 +18,15 @@ print(plot(l1c.P))
 n <- 100
 p <- 120
 
+RNGversion("1.6.0")
 set.seed(n+p)
 x <- matrix(runif(n*p), n,p, dimnames= list(NULL, paste("x",1:p,sep="")))
 x <- as.data.frame(apply(x, 2, sort))
-attach(x)
-y <- 5 + 4*x1 -3*x2 + 10*x3  + (eps <- rnorm(n, sd = 1/200))
-detach()
+with(x,
+     y <<- 5 + 4*x1 -3*x2 + 10*x3  + (eps <<- rnorm(n, sd = 1/200)))
 d.ex <- cbind(y = y, x)
+dim(d.ex)# 100 x 121
+if(FALSE)
 summary(lm(y ~ ., data = d.ex))# pretty nonsense
 
 ## gives something, but not at all the true model ...
@@ -34,8 +37,8 @@ l15 <- l1ce(y ~ ., data = d.ex, bound = 15, absolute.t = TRUE)
 coef(l15)[coef(l15) > 0]
 
 sum(eps^2)
-sum(resid(l20)^2)
-sum(resid(l15)^2)
+sum(resid(l20)^2) / sum(eps^2)
+sum(resid(l15)^2) / sum(eps^2)
 
 l1.lis <- l1ce(y ~ ., data = d.ex, bound = seq(0, 0.1, len=21))
 pl1lis <- plot(l1.lis, ylim = c(-10,10))

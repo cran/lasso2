@@ -1,3 +1,31 @@
+2003-12-15  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* R/formula.util.q (is.gEnv): new function, needed for testing
+	about .GlobalEnv {gave wrong warnings}.
+
+	* tests/l1ce-tst.R: RNGversion("1.6.0") added for back compatibility
+
+	* man/predict.l1ce.Rd: now the newdata works, add example
+
+	* man/summary.l1ce.Rd: usage for print.summary.l1ce
+	* man/...: a few more such changes
+
+	* R/gl1ce.q (gl1ce):  PACKAGE = "lasso2" was missing
+
+	* R/predict.q (predict.l1ce): use "term.labels", not "variables"
+	  (fix by Berwin himself!).
+
+2003-07-09  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* R/formula.util.q (merge.formula): keep formula environment (and
+	warn if differing).
+
+	* man/merge.formula.Rd: add example
+
+2003-03-22  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* R/vcov.q (vcov): generic only for older R versions
+
 2002-04-09  Martin Maechler  <maechler@stat.math.ethz.ch>
 
         * release 1.0-2 to CRAN

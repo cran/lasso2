@@ -1,5 +1,5 @@
 Package: lasso2
-Version: 1.0-2
+Version: 1.0-3
 Author: Justin Lokhorst, Bill Venables and
   Berwin Turlach <berwin@maths.uwa.edu.au>; first port to R: Martin Maechler
 Maintainer: Martin Maechler <maechler@stat.math.ethz.ch>

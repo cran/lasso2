@@ -16,6 +16,7 @@
 \method{summary}{l1ce}(object, correlation = TRUE,
          type = c("OPT", "Tibshirani"),
          gen.inverse.diag = 0, sigma = NULL, \dots)
+\method{print}{summary.l1ce}(x, digits = max(3, getOption("digits") - 3), \dots)
 }
 \arguments{
   \item{object}{fitted model of class \code{"l1ce"}.}
@@ -29,12 +30,13 @@
     is used for the diagonal elements of the generalised inverse that
     appears in the formula that corresponds to parameters estimated to be
     zero.  The default is 0, i.e. use the Moore-Penrose inverse.
-    Tibshirani's code uses gen.inverse.diag=1e11.
-  }
+    Tibshirani's code uses gen.inverse.diag=1e11.}
   \item{sigma}{
     the residual standard error estimate.  If not provided, then it is
     estimated by the deviance of the model divided by the error degrees of
     freedom.}
+  \item{x}{an \R object of class \code{summary.l1ce}.}
+  \item{digits}{number of significant digits to use.}
   \item{\dots}{further potential arguments passed to methods.}
 }
 \value{

@@ -8,8 +8,7 @@
 }
 \usage{
 \method{summary}{gl1ce}(object, dispersion = NULL, correlation = FALSE, \dots)
-\method{print}{summary.gl1ce}(x,
-      digits = max(3, getOption("digits") - 3), \dots)
+\method{print}{summary.gl1ce}(x, digits = max(3, getOption("digits") - 3), \dots)
 }
 \arguments{
   \item{object}{

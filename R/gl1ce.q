@@ -202,7 +202,8 @@ gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
               Lagrangian = double(1),
               success = integer(1),
               trace = do.trace,
-              assub = as.logical(FALSE))[keep]
+              assub = as.logical(FALSE),
+              PACKAGE = "lasso2")[keep]
 
     if(fit$success < 0)
       stop("Uups, something went wrong in the C-routine")

@@ -68,8 +68,7 @@ print.l1celist <- function(x, ...){
   invisible(x)
 }
 
-print.summary.l1ce <-
-    function(x, digits = max(3, .Options$digits - 3), ...)
+print.summary.l1ce <- function(x, digits = max(3, getOption("digits") - 3), ...)
 {
   cat("\nCall:\n ")
   dput(x$call)
@@ -150,7 +149,7 @@ print.gl1ce <- function(x, ...) {
 }
 
 print.summary.gl1ce <-
-    function(x, digits = max(3, .Options$digits - 3), ...)
+    function(x, digits = max(3, getOption("digits") - 3), ...)
 {
   cat("\nCall:\n")
   dput(x$call)
