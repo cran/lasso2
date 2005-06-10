@@ -18,8 +18,8 @@ gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
 {
   ret.x <- x
   ret.y <- y
-  ## R's family functions partly *must* work with `y' and
-  ## binomial()$initialize has its own `n' used in $aic() -- YUCK!! << Martin
+  ## R's family functions partly *must* work with 'y' and
+  ## binomial()$initialize has its own 'n' used in $aic() -- YUCK!! << Martin
   call <- match.call()
   mf <- match.call(expand = FALSE)
 
@@ -38,12 +38,12 @@ gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
     warning(paste(deparse(substitute(data)), "is not a dataframe"))
   }
 
-  mf <- eval(mf, data)
+  mf <- eval(mf, parent.frame())
   weights <- model.extract(mf, weights)
   y <- model.extract(mf, response)
   Terms <- terms(formula, data = data)
   X <- model.matrix(Terms, mf, contrasts)
-  nobs <- nrow(X)# needed for R's family functions (do not use `n', see above!)
+  nobs <- nrow(X)# needed for R's family functions (do not use 'n', see above!)
   X.names <- dimnames(X)[[2]]
   offset <- model.extract(mf,offset)
   if(!is.numeric(offset)) offset <- 0 # for R (at least)
@@ -53,7 +53,8 @@ gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
   else if(any(weights < 0))
       stop("Negative weights not allowed")
   else if(any(weights == 0))
-      stop("The subset argument should be used for observations that need to be excluded")
+      stop("Some weigthts are 0.\n",
+           "Rather, use 'subset= *' for observations that need to be excluded")
 
   do.trace <- as.logical(control$trace)
 
@@ -95,7 +96,7 @@ gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
           stop("y must be univariate unless binomial")
 
       eta <-
-          ## `etastart' and `start' (from glm.fit()) *are* NULL
+          ## 'etastart' and 'start' (from glm.fit()) *are* NULL
           family$linkfun(mustart)
 
       mu <- inv.link(eta)
@@ -122,7 +123,7 @@ gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
       all.matched <- !any(is.na(name.matches))
 
       if(!all.matched)
-      warning("Variables in `sweep.out' are not a subset of those in `formula'")
+      warning("Variables in 'sweep.out' are not a subset of those in 'formula'")
 
       name.matches <- name.matches[!is.na(name.matches)]
       if(some.matched <- length(name.matches)) {
@@ -141,7 +142,7 @@ gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
   p <- ncol(X.to.C)
 
   if(length(guess.constrained.coefficients) != p)
-    stop("invalid argument for `guess.constrained.coefficients'")
+    stop("invalid argument for 'guess.constrained.coefficients'")
 
   keep <- c("coefficients", "fitted.values", "residuals", "success",
             "Lagrangian", "bound")

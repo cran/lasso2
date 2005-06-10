@@ -4,7 +4,7 @@
 ### --> ../COPYRIGHT for more details
 
 if(is.R()) {
-### -- this is also used in gl1ce() hence ``package global'' :
+### -- this is also used in gl1ce() hence ''package global'' :
 
     ## Orig 2.1 version (for S+) calls  qr.rtr.inv(.) which is not in R;
     ## Is only used to return the (R'R)^{-1} where MM thinks should
@@ -48,7 +48,7 @@ l1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
         warning(paste(deparse(substitute(data)), "is not a dataframe"))
     }
 
-    m <- eval(m, data)
+    m <- eval(m, parent.frame())# not just 'data'
     weights <- model.extract(m, weights)
     Y <- model.extract(m, response)
     Terms <- terms(formula, data = data)
@@ -76,7 +76,7 @@ l1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
         name.matches <- match(X.sweep.out.names,X.names)
         all.matched <- !any(is.na(name.matches))
         if(!all.matched)
-            warning("Variables in `sweep.out' are not a subset of variables in `formula'")
+            warning("Variables in 'sweep.out' are not a subset of variables in 'formula'")
 
         name.matches <- name.matches[!is.na(name.matches)]
         if(some.matched <- length(name.matches)) {
@@ -88,7 +88,7 @@ l1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
 
         X.so.qr <- qr(X.sweep.out)
         if( X.so.qr$rank != ncol(X.sweep.out) )
-            warning("Matrix built from variables in `sweep.out' is rank deficient")
+            warning("Matrix built from variables in 'sweep.out' is rank deficient")
 
         X.so.coefficients  <- qr.coef  (X.so.qr, Y.to.C)
         X.so.X     <- qr.coef  (X.so.qr, X.to.C)
@@ -99,8 +99,10 @@ l1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
 
     if(standardize) {
         X.to.C.stds <- sqrt(apply(X.to.C,2,var))
-        if( any(X.to.C.stds < sqrt(.Machine$double.eps)) )
-            stop("Matrix build from transformed variables has a constant column")
+        if(any(i <- X.to.C.stds < sqrt(100 * .Machine$double.eps) *
+               max(X.to.C.stds)))
+            stop("Transformed variable matrix has constant column ", which(i),
+                 "; set standardize = FALSE")
         X.to.C <- sweep(X.to.C, 2, X.to.C.stds, "/")
     }
 
@@ -108,29 +110,29 @@ l1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
     p <- ncol(X.to.C)
 
     if(!absolute.t) {
-        rnk <- (X.to.C.qr <- qr(X.to.C))$rank
-        if(rnk != p) ## maybe:  && p < n
-            warning("X Matrix (transformed variables) has rank ",rnk,
-                    " < p = ",p,", i.e., is deficient")
-        else if( rnk == 0 )
-            stop("Matrix built from transformed variables is null matrix")
-        t0 <- sum(abs(qr.coef(X.to.C.qr, Y.to.C))[1:rnk])
-        if( any(bound > 1) )
-            stop("`bound'(s) must be between 0 and 1 if  absolute.t is false")
+	rnk <- (X.to.C.qr <- qr(X.to.C))$rank
+	if(rnk != p && p < n)
+	    warning("X Matrix (transformed variables) has rank ",rnk,
+		    " < p = ",p,", i.e., is deficient")
+	else if (rnk == 0)
+	    stop("Matrix built from transformed variables is null matrix")
+	t0 <- sum(abs(qr.coef(X.to.C.qr, Y.to.C))[1:rnk])
+	if (any(bound > 1))
+	    stop("'bound'(s) must be between 0 and 1 if 'absolute.t' is false")
 
-        bound <- (relative.bound <- bound) * t0
-
+	bound <- (relative.bound <- bound) * t0
     }
+
     if(any(bound < 0))
-        stop("`bound'(s) must be non negative")
+        stop("'bound'(s) must be non negative")
 
     if( length(guess.constrained.coefficients) != p )
-        stop("invalid argument for `guess.constrained.coefficients'")
+        stop("invalid argument for 'guess.constrained.coefficients'")
 
     keep <- c("coefficients", "fitted.values", "residuals", "success",
               "Lagrangian", "bound")
 
-    if( 1 == (num.bound <- length(bound)) ) { ## 1 bound ----------------------
+    if (1 == (num.bound <- length(bound)) ) { ## 1 bound ----------------------
 
         fit <- .C("lasso",
                   X = as.double(X.to.C),
@@ -146,11 +148,9 @@ l1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
                   assub   = FALSE,
                   PACKAGE = "lasso2")[keep]
 
-        if( fit$success < 0 )
-            stop(paste("Oops, something went wrong in .C(\"lasso\",..):",
-                       fit$success))
-
-        ## else
+        if (fit$success < 0)
+            stop("Oops, something went wrong in .C(\"lasso\",..): ",fit$success)
+        ## else drop it:
         fit$success <- NULL
 
         fit$xtx <- crossprod(X.to.C)
@@ -228,11 +228,10 @@ l1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
                   trace   = trace,
                   PACKAGE = "lasso2")[keep]
 
-        if( res$success < 0 )
-            stop(paste("Oops, something went wrong in .C(\"mult_lasso\",..):",
-                       res$success))
-
-        ## else
+        if (res$success < 0)
+            stop("Oops, something went wrong in .C(\"mult_lasso\",..): ",
+                 res$success)
+        ## else drop it:
         res$success <- NULL
 
         total.fit <- vector("list", num.bound)

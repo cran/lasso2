@@ -7,11 +7,13 @@ data(Iowa)
 l1c.I <- l1ce(Yield ~ ., Iowa, bound = 10, trace = TRUE, absolute.t=TRUE)
 
 ## the next ones give a l1ce LIST (one for each bound)
-l1c.liI <- l1ce(Yield ~ ., Iowa, bound = seq(0,1, len= 17))
+l1c.liI <- l1ce(Yield ~ ., Iowa, bound = seq(1e-6,1, len= 17))
 print(plot(l1c.liI))
 
 data(Prostate)
-l1c.P <- l1ce(lpsa ~ ., Prostate, bound= seq(0,1, len= 17))
+## '0' fails on 64b: l1c.P <- l1ce(lpsa ~ ., Prostate, bound= c(0, 1, len= 17))
+l1c.P <- l1ce(lpsa ~ ., Prostate, bound= c(1e-6,seq(1/16, 1, by=1/16)))
+##                    complicated bound (for the comparison test below)
 print(plot(l1c.P))
 ## test  multi-/single- bound problem:
 l1c.P.25 <- l1ce(lpsa ~ ., Prostate, bound= 0.25)# 0.25 is nr. [5] above
@@ -35,9 +37,9 @@ with(x,
 d.ex <- cbind(y = y, x)
 dim(d.ex)# 100 x 121
 if(FALSE)
-summary(lm(y ~ ., data = d.ex))# pretty nonsense
+summary(lm(y ~ ., data = d.ex))# almost complete nonsense
 
-## gives something, but not at all the true model ...
+## both these give something, but not at all the true model ...
 l20 <- l1ce(y ~ ., data = d.ex, bound = 20, absolute.t = TRUE)
 coef(l20)[coef(l20) > 0]
 
@@ -48,8 +50,22 @@ sum(eps^2)
 sum(resid(l20)^2) / sum(eps^2)
 sum(resid(l15)^2) / sum(eps^2)
 
-l1.lis <- l1ce(y ~ ., data = d.ex, bound = seq(0, 0.1, len=21))
-pl1lis <- plot(l1.lis, ylim = c(-10,10))
+## Lower the bounds dramatically now:
+l1.lis <- l1ce(y ~ ., data = d.ex, bound = seq(1e-6, 0.1, len=21))
+
+pl1lis <- plot(l1.lis)#ylim = c(-10,10))
 round(pl1lis$mat,3)
 bnds <- pl1lis$bounds[,"rel.bound"]
 round(1000 * t(pl1lis$mat[0.01 < bnds & bnds < 0.06 ,]))
+
+### ---------- Check that l1ce(.) can be used inside functions -------
+
+## {has not worked for a long time, till 2005-06-10}:
+myLasso <- function(formula, data, sweep.out = ~ 1, boundset) {
+    ## Of course this is silly: calling l1ce() for each bound separately:
+    sapply(boundset, function(B)
+           l1ce(formula, data = data, sweep.out = sweep.out, bound = B),
+           simplify = FALSE)
+}
+my.lis <- myLasso(y ~ ., data = d.ex, boundset = seq(1e-6, 0.1, len=6))
+## should have a subset from the models in  l1.lis above !

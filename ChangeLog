@@ -1,3 +1,17 @@
+2005-06-10  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* DESCRIPTION (Version, Date): 1.2-2
+
+	* src/lasso.c (lasso): indent and use spaces "properly".
+
+	* R/gl1ce.q (gl1ce): use eval(m, parent.frame())
+	* R/l1ce.q (l1ce):   instead of eval(m, data)
+	* R/l1ce.q (l1ce): warn about rank only when p <= n
+
+2005-02-11  Martin Maechler  <maechler@stat.math.ethz.ch>
+
+	* R/l1ce.q (l1ce): improve error message for 'constant column'
+
 2004-04-13  Martin Maechler  <maechler@stat.math.ethz.ch>
 
 	* DESCRIPTION (Version, Date): 1.2-0
