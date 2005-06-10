@@ -1,39 +1,44 @@
-l1ce		Regression Fitting With L1-constraint on the Parameters
-gl1ce		Generalized Regression With L1-constraint on the Parameters
-
-[.l1celist		Subscript a `l1celist' Object
-coef.l1ce		Coefficients of an `l1ce' Object
-coef.l1celist		Coefficients of an `l1celist' Object
-deviance.gl1ce		Deviance Method for `gl1ce' Objects
-deviance.l1ce		Deviance Method for `l1ce' and `l1celist' Objects
-fitted.l1ce		Fitted Values for `l1ce' and `l1celist' Objects
-gcv			Generalised Cross-Validation Score
-gcv.l1ce		`gcv()' Methods for `l1ce' and `l1celist' Objects.
-gl1ce.object		Generalized L1 Constrained Estimation Model Object
-is.formula		Tests for Formula Objects
-l1ce.object		L1 Constrainted Estimation Model Object
-l1celist.object		Object of Several L1 Constrained Estimation Models
-labels.l1ce		`Labels' Method for `l1ce' and `l1celist' Objects
-lasso-internal		Internal lasso functions
-merge.formula		Merge Formula With Right Hand Side of Second Formula
-plot.l1celist		Plot Method for `l1celist' Objects
-predict.gl1ce		Use `predict()' on a `gl1ce' object
-predict.l1ce		Predict Method for `l1ce' Objects
-print.l1ce		Print Methods for `l1ce', `l1celist' and `gl1ce' Objects
-qr.rtr.inv		Reconstruct the Inverse of R'R from a QR Object
-residuals.gl1ce		Compute Residuals for `gl1ce' Objects
-residuals.l1ce		Residuals of `l1ce' or `l1celist' Objects
-summary.gl1ce		Summary Method for Generalized L1 Constrained
-			Regression Models
-summary.l1ce		Summary Method for ``l1ce'' Objects (Regression
-			with L1 Constraint)
-tr			Trace of a Matrix
-vcov.l1ce		Variance-Covariance Matrix of `l1ce' or
-			`l1celist' Objects
-aux			Extract auxiliary information from an object.
-aux.l1celist		Use `aux()' on a `l1celist' object
-
-	Datasets
-
-Iowa			The Iowa Wheat Yield Data
-Prostate		Prostate Cancer Data
+Iowa                    The Iowa Wheat Yield Data
+Prostate                Prostate Cancer Data
+[.l1celist              Subscript a 'l1celist' Object
+aux                     Extract Auxiliary Information From an Object
+aux.l1celist            Use 'aux()' on a 'l1celist' object
+coef.l1ce               Coefficients of an 'l1ce' Object
+coef.l1celist           Coefficients of an 'l1celist' Object
+deviance.gl1ce          Deviance Method for 'gl1ce' Objects
+deviance.l1ce           Deviance Method for 'l1ce' and 'l1celist'
+                        Objects
+fitted.l1ce             Fitted Values for 'l1ce', 'l1celist' and
+                        'gl1ce' Objects
+gcv                     Generalised Cross-Validation Score
+gcv.l1ce                'gcv()' Methods for 'l1ce' and 'l1celist'
+                        Objects.
+gl1ce                   Generalized Regression With L1-constraint on
+                        the Parameters
+gl1ce.object            Generalized L1 Constrained Estimation Model
+                        Object
+is.formula              Tests for Formula Objects
+l1ce                    Regression Fitting With L1-constraint on the
+                        Parameters
+l1ce.object             L1 Constrainted Estimation Model Object
+l1celist.object         Object of Several L1 Constrained Estimation
+                        Models
+labels.l1ce             'Labels' Method for 'l1ce' and 'l1celist'
+                        Objects
+merge.formula           Merge Formula With Right Hand Side of Second
+                        Formula
+plot.l1celist           Plot Method for 'l1celist' Objects
+predict.gl1ce           Prediction Method for a 'gl1ce' Object
+predict.l1ce            Predict Method for 'l1ce' Objects
+print.l1ce              Print Methods for 'l1ce', 'l1celist' and
+                        'gl1ce' Objects
+qr.rtr.inv              Reconstruct the Inverse of R'R from a QR Object
+residuals.gl1ce         Compute Residuals for 'gl1ce' Objects
+residuals.l1ce          Residuals of 'l1ce' or 'l1celist' Objects
+summary.gl1ce           Summary Method for Generalized L1 Constrained
+                        Regression Models
+summary.l1ce            Summary Method for "l1ce" Objects (Regression
+                        with L1 Constraint)
+tr                      Trace of a Matrix
+vcov.l1ce               Variance-Covariance Matrix of 'l1ce' or
+                        'l1celist' Objects

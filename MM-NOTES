@@ -3,6 +3,13 @@ Remarks by Martin Maechler, Jan.-Feb.2002,
 when first porting the Dec.1999 code from S-plus to R
 ------------------------------------------------------------
 
+0) NOTE:  I keep much more in this source directory than is distributed
+   	  with the (source) package:
+
+    ---> Excluding ./Lasso2 and quite a few more things via
+    ~/.Rbuildignore
+    ---------------
+
 1) Question about naming :
 
 	 Lasso2/Doc/Manual.ps
@@ -35,11 +42,9 @@ when first porting the Dec.1999 code from S-plus to R
 
   5b) similar bug fix in R/gl1ce.q
 
-6) vcov() --- same as vcov() in MASS  (but ..)
-	  --- or should we require MASS since that is now recommended, i.e.
-	      available wherever R is.
+6) vcov()
 
-	  --- or should  "base R" define the vcov(.) generic ?
+	since R 1.6.x  the vcov (S3)-generic is in 'stats'
 
 7) man/*.Rd : There is now [Version 1.0-1, 2002-02-06] only one warning left :
 	    - about 3 undocumented objects:
