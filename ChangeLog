@@ -1,3 +1,8 @@
+2006-01-06  Berwin A Turlach  <berwin@maths.uwa.edu.au>
+
+	* DESCRIPTION (Version, Date, Maintainer)
+	* man/predict.gl1ce.Rd:  cope with change to all.equal() in R-2.3.x 
+
 2005-06-10  Martin Maechler  <maechler@stat.math.ethz.ch>
 
 	* DESCRIPTION (Version, Date): 1.2-2
