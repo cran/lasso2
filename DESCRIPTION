@@ -1,6 +1,6 @@
 Package: lasso2
-Version: 1.2-4
-Date: 2006-01-06
+Version: 1.2-5
+Date: 2006-04-05
 Author: Justin Lokhorst, Bill Venables and Berwin Turlach;
   port to R, tests etc: Martin Maechler <maechler@stat.math.ethz.ch>
 Maintainer: Berwin Turlach <berwin@maths.uwa.edu.au>
@@ -11,4 +11,4 @@ Description: Routines and documentation for solving regression problems
 Depends: R (>= 1.7.1)
 License: GPL version 2 or later
 URL: http://www.maths.uwa.edu.au/~berwin/software/lasso.html
-Packaged: Fri Jan  6 12:06:43 2006; berwin
+Packaged: Wed Apr  5 09:57:28 2006; berwin

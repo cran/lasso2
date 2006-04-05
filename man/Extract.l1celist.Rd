@@ -3,10 +3,10 @@
 % Bill Venables <wvenable@stats.adelaide.edu.au>
 % $Id: [[.l1celist.d,v 1.1 1998/09/18 11:23:09 bturlach Exp $
 % --> ../COPYRIGHT for more details
-\name{[.l1celist}
+\name{Extract.l1celist}
 \alias{[.l1celist}
 \alias{[[.l1celist}
-\title{Subscript a `l1celist' Object}
+\title{Extract Parts of a `l1celist' Object}
 \description{
   Allows the user to extract values from a \code{l1celist} object by using
   subscripts.

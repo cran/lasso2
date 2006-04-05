@@ -1,6 +1,6 @@
 Iowa                    The Iowa Wheat Yield Data
 Prostate                Prostate Cancer Data
-[.l1celist              Subscript a 'l1celist' Object
+[.l1celist              Extract Parts of a 'l1celist' Object
 aux                     Extract Auxiliary Information From an Object
 aux.l1celist            Use 'aux()' on a 'l1celist' object
 coef.l1ce               Coefficients of an 'l1ce' Object

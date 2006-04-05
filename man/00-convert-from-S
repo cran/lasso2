@@ -1,3 +1,0 @@
-for f in ../Lasso2/*.d
-do   bf=`basename $f .d`; echo $bf;  R CMD Sd2Rd -x $f > $bf.Rd
-done
