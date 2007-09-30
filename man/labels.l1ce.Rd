@@ -8,8 +8,8 @@
 \alias{labels.l1celist}
 \title{`Labels' Method for `l1ce' and `l1celist' Objects}
 \usage{
-labels.l1ce(object, \dots)
-labels.l1celist(object, \dots)
+\method{labels}{l1ce}(object, \dots)
+\method{labels}{l1celist}(object, \dots)
 }
 \arguments{
   \item{object}{fitted model of class \code{"l1ce"} or

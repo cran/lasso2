@@ -8,8 +8,8 @@
   \code{help(\link{l1ce.object})} and \code{help(\link{l1celist.object})}).
 }
 \usage{
-fitted.l1ce(object, \dots)
-fitted.l1celist(object, \dots)
+\method{fitted}{l1ce}(object, \dots)
+\method{fitted}{l1celist}(object, \dots)
 }
 \arguments{
   \item{object}{an object inheriting from class \code{l1ce} or

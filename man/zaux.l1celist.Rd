@@ -7,12 +7,12 @@
 \alias{aux.l1celist}
 \title{Use `aux()' on a `l1celist' object}
 \usage{
-aux.l1celist(object, \dots)
+\method{aux}{l1celist}(object, \dots)
 }
 \arguments{
   \item{object}{fitted model object (here typically of class
     \code{l1celist}).}
-  \item{\dots}{potentilly further arguments passed to methods.}
+  \item{\dots}{potentially further arguments passed to methods.}
 }
 \description{
   This is a method for the function \code{aux()} for objects inheriting

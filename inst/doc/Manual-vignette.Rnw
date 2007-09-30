@@ -1,0 +1,11 @@
+\documentclass[a4paper]{article}
+%\VignetteIndexEntry{Manual of lasso2 package}
+%\VignettePackage{lasso2}
+
+\usepackage{pdfpages}
+
+\begin{document}
+
+\includepdf[fitpaper=true,pages=-]{Manual-wo-help.pdf}
+
+\end{document}

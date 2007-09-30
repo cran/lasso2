@@ -8,8 +8,8 @@
 \alias{residuals.l1celist}
 \title{Residuals of `l1ce' or `l1celist' Objects}
 \usage{
-residuals.l1ce(object, type, \dots)
-residuals.l1celist(object, type, \dots)
+\method{residuals}{l1ce}(object, type, \dots)
+\method{residuals}{l1celist}(object, type, \dots)
 }
 \arguments{
   \item{object}{

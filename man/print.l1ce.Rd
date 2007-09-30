@@ -8,9 +8,9 @@
 \alias{print.gl1ce}
 \title{Print Methods for `l1ce', `l1celist' and `gl1ce' Objects}
 \usage{
-print.l1ce(x, \dots)
-print.l1celist(x, \dots)
-print.gl1ce(x, \dots)
+\method{print}{l1ce}(x, \dots)
+\method{print}{l1celist}(x, \dots)
+\method{print}{gl1ce}(x, \dots)
 }
 \arguments{
   \item{x}{fitted model of class \code{"l1ce"} or

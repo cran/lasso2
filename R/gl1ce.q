@@ -40,7 +40,7 @@ gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
 
   mf <- eval(mf, parent.frame())
   weights <- model.extract(mf, weights)
-  y <- model.extract(mf, response)
+  y <- model.extract(mf, "response")
   Terms <- terms(formula, data = data)
   X <- model.matrix(Terms, mf, contrasts)
   nobs <- nrow(X)# needed for R's family functions (do not use 'n', see above!)

@@ -6,7 +6,7 @@
 \alias{merge.formula}
 \title{Merge Formula With Right Hand Side of Second Formula}
 \usage{
-merge.formula(x, y, \dots)
+\method{merge}{formula}(x, y, \dots)
 }
 \arguments{
   \item{x,y}{formulas.}

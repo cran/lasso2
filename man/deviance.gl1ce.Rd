@@ -2,7 +2,7 @@
 \alias{deviance.gl1ce}
 \title{Deviance Method for `gl1ce' Objects}
 \usage{
-deviance.gl1ce(object, \dots)
+\method{deviance}{gl1ce}(object, \dots)
 }
 \description{
   This is a method of the generic function \code{\link{deviance}()} for

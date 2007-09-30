@@ -68,7 +68,7 @@ l1ce(formula, data = sys.parent(), weights, subset, na.action,
     correspond to parameters that are constrained are standardized to have
     emprical variance one.  The standardization is done after taking
     possible weights into account and after sweeping out variables whose
-    parameters are not constrained.
+    parameters are not constrained; see vignette for details.
   }
   \item{trace}{
     logical flag: if \code{TRUE}, then the status during each iteration of
@@ -83,7 +83,7 @@ l1ce(formula, data = sys.parent(), weights, subset, na.action,
     logical flag: if \code{TRUE}, then \code{bound} is an absolute bound and
     all entries in \code{bound} can be any positive number.  If
     \code{FALSE}, then \code{bound} is a relative bound and all entries
-    must be between 0 and 1.}
+    must be between 0 and 1; see vignette for details.}
 }
 \value{
   an object of class \code{l1ce} (if \code{bound} was a single value) or

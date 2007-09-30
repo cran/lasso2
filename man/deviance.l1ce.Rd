@@ -3,8 +3,8 @@
 \alias{deviance.l1celist}
 \title{Deviance Method for `l1ce' and `l1celist' Objects}
 \usage{
-deviance.l1ce(object, \dots)
-deviance.l1celist(object, \dots)
+\method{deviance}{l1ce}(object, \dots)
+\method{deviance}{l1celist}(object, \dots)
 }
 \arguments{
   \item{object}{an object inheriting from class \code{l1ce} or

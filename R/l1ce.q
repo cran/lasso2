@@ -50,7 +50,7 @@ l1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
 
     m <- eval(m, parent.frame())# not just 'data'
     weights <- model.extract(m, weights)
-    Y <- model.extract(m, response)
+    Y <- model.extract(m, "response")
     Terms <- terms(formula, data = data)
     X <- model.matrix(Terms, m, contrasts)
     X.names <- dimnames(X)[[2]]

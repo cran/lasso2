@@ -12,12 +12,12 @@
   subscripts.
 }
 \usage{
-x[i, drop]
-x[[i]]
+\method{[}{l1celist}(x, \dots, drop = TRUE)
+\method{[[}{l1celist}(x, \dots, drop = TRUE)
 }
 \arguments{
   \item{x}{an object inheriting from class \code{"l1celist"}.}
-  \item{i}{subscripts applying to elements (fitted models) in the list.}
+  \item{\dots}{a specification of indices -- see \code{\link{Extract}}.}
   \item{drop}{logical defaulting to \code{TRUE}.  If only one model is
     subscribed, then it is returned as an object of class \code{"l1ce"}.
     If \code{drop=F}, then an object of class \code{"l1celist"} is

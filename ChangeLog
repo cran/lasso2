@@ -1,3 +1,8 @@
+2007-09-30  Berwin A Turlach  <berwin@maths.uwa.edu.au>
+
+	* Updated various .Rd files to cope with changes in R-2.6.0
+	* Updated some .q files to cope with changes in R-2.6.0
+
 2006-01-06  Berwin A Turlach  <berwin@maths.uwa.edu.au>
 
 	* DESCRIPTION (Version, Date, Maintainer)

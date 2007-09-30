@@ -10,7 +10,7 @@
    Plots a \code{l1celist} object on the current graphics device.
 }
 \usage{
-plot.l1celist(x, plot=TRUE, all=TRUE, constrained=FALSE,
+\method{plot}{l1celist}(x, plot=TRUE, all=TRUE, constrained=FALSE,
               type = "b", xlab = "bounds", ylab = "coeff | bounds", \dots)
 }
 \arguments{
