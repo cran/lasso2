@@ -1,3 +1,13 @@
+2008-09-08  Berwin A Turlach  <berwin@maths.uwa.edu.au>
+
+	* Added a Makefile to inst/doc since "R CMD check" does not behave
+	in documented way, it actually tries to build the vignette PDF.
+
+2008-09-07  Berwin A Turlach  <berwin@maths.uwa.edu.au>
+
+	* Various .Rd files contained an unmatched right brace.  Fixed
+	those files.  Reported by Tim Hesterberg <rocket@google.com>.
+
 2007-09-30  Berwin A Turlach  <berwin@maths.uwa.edu.au>
 
 	* Updated various .Rd files to cope with changes in R-2.6.0

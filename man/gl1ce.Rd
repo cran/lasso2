@@ -2,7 +2,6 @@
 \alias{gl1ce}
 \alias{family.gl1ce}
 \title{Generalized Regression With L1-constraint on the Parameters}
-}
 \description{
   Fit a generalized regression problem while imposing an L1 constraint on
   the parameters.  Returns an object of class \code{gl1ce}.

@@ -6,7 +6,6 @@
 \name{gcv}
 \alias{gcv}
 \title{Generalised Cross-Validation Score}
-}
 \description{
   Extracts the generalised cross-validation score(s) from fitted
   model objects.

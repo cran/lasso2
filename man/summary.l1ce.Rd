@@ -7,7 +7,6 @@
 \alias{summary.l1ce}
 \alias{print.summary.l1ce}
 \title{Summary Method for ``l1ce'' Objects (Regression with L1 Constraint)}
-}
 \description{
   Returns a summary list for a regression model with an L1 constraint on
   the parameters.  A null value will be returned if printing is invoked.
