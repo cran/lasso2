@@ -1,3 +1,9 @@
+2008-09-11  Berwin A Turlach  <berwin@maths.uwa.edu.au>
+
+	* Removed the Makefile from inst/doc since I found a "pure" LaTeX
+	way to check for missing PDFs that are to be included with
+	\includepdf. 
+
 2008-09-08  Berwin A Turlach  <berwin@maths.uwa.edu.au>
 
 	* Added a Makefile to inst/doc since "R CMD check" does not behave

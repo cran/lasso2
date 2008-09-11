@@ -6,6 +6,12 @@
 
 \begin{document}
 
+\newread\PDFtoInclude
+\openin\PDFtoInclude=Manual-wo-help.pdf
+\ifeof\PDFtoInclude
+\typeout{No file Manual-wo-help.pdf}
+\else
 \includepdf[fitpaper=true,pages=-]{Manual-wo-help.pdf}
+\fi
 
 \end{document}

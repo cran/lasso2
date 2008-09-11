@@ -7,6 +7,12 @@
 \usepackage{/opt/R/R-2.7.2/lib64/R/share/texmf/Sweave}
 \begin{document}
 
+\newread\PDFtoInclude
+\openin\PDFtoInclude=Manual-wo-help.pdf
+\ifeof\PDFtoInclude
+\typeout{No file Manual-wo-help.pdf}
+\else
 \includepdf[fitpaper=true,pages=-]{Manual-wo-help.pdf}
+\fi
 
 \end{document}
