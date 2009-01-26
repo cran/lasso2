@@ -182,8 +182,11 @@ gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
       Y.to.C <- qr.resid(X.so.qr, Y.to.C)     #Y*
     }
 
+    X.to.C.stds <- apply(X.to.C.w, 2, sd)
+    if( all(X.to.C.stds < sqrt(.Machine$double.eps) ) ){
+      stop("Transformed X matrix contains only constant columns")
+    }
     if(standardize) {
-      X.to.C.stds <- sqrt(apply(X.to.C.w, 2, var))
       if(any(X.to.C.stds < sqrt(.Machine$double.eps)))
         stop("Matrix build from transformed variables has a constant column")
       X.to.C.w <- sweep(X.to.C.w, 2, X.to.C.stds, "/")

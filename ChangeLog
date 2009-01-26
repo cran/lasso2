@@ -1,3 +1,12 @@
+2009-01-26  Berwin A Turlach  <berwin@maths.uwa.edu.au>
+
+	* Added check in l1ce() and gl1ce() whether matrix passed to C
+	routine contains only constant column to avoid attempts for
+	fitting non-sensical models.
+
+	* Corrected errors in gl1ce.object.Rd and l1celist.object.Rd found
+	by now Rd parser of (future) R-2.9.0.
+
 2008-09-11  Berwin A Turlach  <berwin@maths.uwa.edu.au>
 
 	* Removed the Makefile from inst/doc since I found a "pure" LaTeX

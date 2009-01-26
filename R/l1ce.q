@@ -97,8 +97,11 @@ l1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
         Y.to.C     <- qr.resid (X.so.qr, Y.to.C)
     }
 
+    X.to.C.stds <- apply(X.to.C,2,sd)
+    if( all(X.to.C.stds < sqrt(.Machine$double.eps) ) ){
+      stop("Transformed X matrix contains only constant columns")
+    }
     if(standardize) {
-        X.to.C.stds <- sqrt(apply(X.to.C,2,var))
         if(any(i <- X.to.C.stds < sqrt(100 * .Machine$double.eps) *
                max(X.to.C.stds)))
             stop("Transformed variable matrix has constant column ", which(i),

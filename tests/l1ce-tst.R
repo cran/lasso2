@@ -19,9 +19,9 @@ print(plot(l1c.P))
 l1c.P.25 <- l1ce(lpsa ~ ., Prostate, bound= 0.25)# 0.25 is nr. [5] above
 l1c.P.1 <-  l1ce(lpsa ~ ., Prostate, bound= 1)
 lm.P     <- lm  (lpsa ~ ., Prostate)
-stopifnot(all.equal(coef(l1c.P.25), coef(l1c.P)[ 5,], tol= 1e-15),
-          all.equal(coef(l1c.P.1 ), coef(l1c.P)[17,], tol= 1e-15),
-          all.equal(coef(lm.P),     coef(l1c.P.1),    tol= 1e-14)
+stopifnot(all.equal(coef(l1c.P.25), coef(l1c.P)[ 5,], tol= 1e-13),
+          all.equal(coef(l1c.P.1 ), coef(l1c.P)[17,], tol= 1e-13),
+          all.equal(coef(lm.P),     coef(l1c.P.1),    tol= 1e-13)
           )
 
 ###-------- Try a case where p > n :
@@ -69,3 +69,24 @@ myLasso <- function(formula, data, sweep.out = ~ 1, boundset) {
 }
 my.lis <- myLasso(y ~ ., data = d.ex, boundset = seq(1e-6, 0.1, len=6))
 ## should have a subset from the models in  l1.lis above !
+
+
+### ------------------------------------------------------------------
+value = c(-1.2229125582, 0.0291875346, -1.1354055994, -1.1586843969,
+0.0265310929, -1.2761698858, -0.9567990729, 0.0001296789,
+-0.9174081609, -0.8564132893 , 0.0825918391, -0.8348783996,
+-0.8967906196, -0.1102660185, -0.9392872627, -0.6826339823,
+0.0521741319, -0.7737865885)
+
+P3 =  c(1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1)
+P4 =  c(0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1)
+
+P1 = c(1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0)
+
+df = data.frame(value,P1,P3,P4)
+
+try( l1ce(value~-1+(P3+P4+P1)^2,data=df,na.action=na.omit,absolute.t=TRUE,standardize=FALSE,bound=0.4,sweep.out=~-1+ (P3+P4+P1) ))
+
+try( l1ce(value~-1+(P3+P4+P1)^2,data=df,na.action=na.omit,absolute.t=TRUE,standardize=FALSE,bound=0.5,sweep.out=~-1+ (P3+P4+P1) ))
+
+try(l1ce(value~-1+(P3+P4+P1)^2,data=df,na.action=na.omit,absolute.t=TRUE,standardize=FALSE,bound=0.6,sweep.out=~-1+ (P3+P4+P1) ))
