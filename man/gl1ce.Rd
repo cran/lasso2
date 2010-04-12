@@ -84,7 +84,7 @@ gl1ce(formula, data = sys.parent(), weights, subset, na.action,
   }
   \item{bound}{numeric, either a single number or a vector: the
     constraint(s) that is/are put onto the L1 norm of the parameters.}
-  \item{\dots}{potential arguments for \code{\link[base]{glm.control}},
+  \item{\dots}{potential arguments for \code{\link[stats]{glm.control}},
     as default for the \code{control} argument above.}
   \item{object}{an \R object of class \code{"gl1ce"}.}
 }% args

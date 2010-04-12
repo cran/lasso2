@@ -1,3 +1,14 @@
+2010-04-12  Berwin A Turlach  <berwin@maths.uwa.edu.au>
+
+	* DESCRIPTION (Version): New version is 1.2-11
+	
+	* DESCRIPTION (Maintainer): Changed e-mail address from former NUS
+	e-mail to UWA e-mail.
+	
+
+	* man/gl1ce.Rd: updated link from [base]{glm.control} to
+	[stats]{glm.control}
+
 2009-01-26  Berwin A Turlach  <berwin@maths.uwa.edu.au>
 
 	* Added check in l1ce() and gl1ce() whether matrix passed to C
