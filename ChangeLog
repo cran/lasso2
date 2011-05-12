@@ -1,10 +1,18 @@
+2011-05-12  Berwin A Turlach  <Berwin.Turlach@gmail.com>
+
+	* DESCRIPTION (Version): New version is 1.2-12
+
+	* COPYRIGHT: Changed license to GPL >= 2 to conform with
+	information in DESCRIPTION.
+
+	* Changed e-mail address to Gmail e-mail in various files.
+
 2010-04-12  Berwin A Turlach  <berwin@maths.uwa.edu.au>
 
 	* DESCRIPTION (Version): New version is 1.2-11
-	
+
 	* DESCRIPTION (Maintainer): Changed e-mail address from former NUS
 	e-mail to UWA e-mail.
-	
 
 	* man/gl1ce.Rd: updated link from [base]{glm.control} to
 	[stats]{glm.control}
