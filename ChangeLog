@@ -1,3 +1,18 @@
+2012-11-20  Berwin A Turlach  <Berwin.Turlach@gmail.com>
+
+	* DESCRIPTION (Version): New version is 1.2-14
+
+	* NAMESPACE: added NAMESPACE
+
+	* R/.First.lib.q: renamed to zzz.q, changed from .First.lib() to
+	.onAttach(), also using packageStartupMessage() now.
+
+	* R/l1ce.q, R/gl1ce.q: spelled formal arguments out to avoid notes
+	about partial matching during check.
+
+	* src/lasso.h: changed definition of Sprintf to be unconditional
+	as "R CMD check" otherwise complains.
+
 2011-05-12  Berwin A Turlach  <Berwin.Turlach@gmail.com>
 
 	* DESCRIPTION (Version): New version is 1.2-12

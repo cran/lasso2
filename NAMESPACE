@@ -1,5 +1,40 @@
-# Default NAMESPACE created by R
-# Remove the previous line if you edit this file
+useDynLib(lasso2)
 
-# Export all names
-exportPattern(".")
+export(gcv)
+export(gl1ce)
+export(l1ce)
+export(merge.formula)
+export(qr.rtr.inv)
+export(tr)
+
+importFrom(stats, coef, deviance, fitted, predict, residuals, vcov, family)
+S3method(coef, l1ce)
+S3method(coef, l1celist)
+S3method(deviance, l1ce)
+S3method(deviance, l1celist)
+S3method(deviance, gl1ce)
+S3method(family, gl1ce)
+S3method(fitted, l1ce)
+S3method(fitted, l1celist)
+S3method(predict, l1ce)
+S3method(predict, gl1ce)
+S3method(residuals, l1ce)
+S3method(residuals, l1celist)
+S3method(residuals, gl1ce)
+S3method(vcov, l1ce)
+S3method(vcov, l1celist)
+
+importFrom(graphics, plot)
+S3method(plot, l1celist)
+
+## in base
+S3method(labels, l1ce)
+S3method(labels, l1celist)
+S3method(print, l1ce)
+S3method(print, l1celist)
+S3method(print, gl1ce)
+S3method(summary, l1ce)
+S3method(summary, gl1ce)
+S3method("[", l1celist)
+S3method("[[", l1celist)
+

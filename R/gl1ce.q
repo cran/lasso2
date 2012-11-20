@@ -21,7 +21,7 @@ gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
   ## R's family functions partly *must* work with 'y' and
   ## binomial()$initialize has its own 'n' used in $aic() -- YUCK!! << Martin
   call <- match.call()
-  mf <- match.call(expand = FALSE)
+  mf <- match.call(expand.dots = FALSE)
 
   mf$sweep.out <- mf$x <- mf$y <- mf$contrasts <- mf$standardize <-
     mf$guess.constrained.coefficients <- mf$trace <- mf$bound <-
@@ -89,7 +89,7 @@ gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
           } else sum(dr)
       }
       ee <- new.env()
-      assign("dev.res", family$dev.res, env = ee)
+      assign("dev.res", family$dev.res, envir = ee)
       environment(family$deviance) <- ee
 
       if (NCOL(y) > 1)

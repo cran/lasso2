@@ -32,7 +32,7 @@ l1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
 		 bound = 0.5, absolute.t = FALSE)
 {
     call <- match.call()
-    m <- match.call(expand = FALSE)
+    m <- match.call(expand.dots = FALSE)
     m$sweep.out <- m$x <- m$y <- m$contrasts <-
         m$standardize <- m$guess.constrained.coefficients <- m$trace <-
             m$bound <- m$absolute.t <- NULL

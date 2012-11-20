@@ -43,11 +43,7 @@
 # define Memcpy(p,q,n)     memcpy(p,q,(n)*sizeof(*(p)))
 #endif
 
-#ifndef USING_R
 # define Sprintf Rprintf
-# else
-# define Sprintf printf
-#endif
 
 void lasso(double *x, Sint *pn, Sint *pm, double *pt,
            double *beta, double *y, double *yhat1, double *r,
