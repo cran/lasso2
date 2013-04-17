@@ -78,8 +78,10 @@ gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
           validmu <- function(mu) TRUE
       ## eval(family$initialize)
       ## calculates mustart and may change y and weights and set n (!)
+      mustart <- NULL  ## make codetools happy
       eval(family$initialize)
 
+      dev.res <- NULL  ## make codetools happy
       family$deviance <- function(mu, y, weights, residuals = FALSE)
       {
           dr <- dev.res(y, mu, weights)
@@ -89,7 +91,8 @@ gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
           } else sum(dr)
       }
       ee <- new.env()
-      assign("dev.res", family$dev.res, envir = ee)
+##      assign("dev.res", family$dev.res, envir = ee)
+      assign("dev.res", family$dev.resids, envir = ee)
       environment(family$deviance) <- ee
 
       if (NCOL(y) > 1)

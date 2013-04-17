@@ -30,6 +30,7 @@
 #  include <newredef.h>
 # endif
 # ifdef USING_R
+#include <R.h>
    typedef int Sint;
 # else
    typedef long Sint;

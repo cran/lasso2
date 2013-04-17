@@ -1,3 +1,11 @@
+2013-04-17  Berwin A Turlach  <Berwin.Turlach@gmail.com>
+
+	* DESCRIPTION (Date): New version is 1.2-15
+
+	* NAMESPACE: Added S3mehod() instructions for methods for gcv,
+	methods do not seem to be exported automatically with generic
+	anymore since 2.15.3
+
 2012-11-20  Berwin A Turlach  <Berwin.Turlach@gmail.com>
 
 	* DESCRIPTION (Version): New version is 1.2-14

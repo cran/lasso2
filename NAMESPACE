@@ -7,6 +7,9 @@ export(merge.formula)
 export(qr.rtr.inv)
 export(tr)
 
+S3method(gcv, l1ce)
+S3method(gcv, l1celist)
+
 importFrom(stats, coef, deviance, fitted, predict, residuals, vcov, family)
 S3method(coef, l1ce)
 S3method(coef, l1celist)
