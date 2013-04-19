@@ -51,7 +51,7 @@ sum(resid(l20)^2) / sum(eps^2)
 sum(resid(l15)^2) / sum(eps^2)
 
 ## Lower the bounds dramatically now:
-l1.lis <- l1ce(y ~ ., data = d.ex, bound = seq(1e-6, 0.1, len=21))
+l1.lis <- l1ce(y ~ ., data = d.ex, bound = seq(1e-5, 0.1, len=21))
 
 pl1lis <- plot(l1.lis)#ylim = c(-10,10))
 round(pl1lis$mat,3)
@@ -67,7 +67,7 @@ myLasso <- function(formula, data, sweep.out = ~ 1, boundset) {
            l1ce(formula, data = data, sweep.out = sweep.out, bound = B),
            simplify = FALSE)
 }
-my.lis <- myLasso(y ~ ., data = d.ex, boundset = seq(1e-6, 0.1, len=6))
+my.lis <- myLasso(y ~ ., data = d.ex, boundset = seq(1e-5, 0.1, len=6))
 ## should have a subset from the models in  l1.lis above !
 
 

@@ -1,3 +1,6 @@
+if(getRversion() >= "2.15.1")
+  utils::globalVariables(c("dev.res", "mustart"))
+
 ###  Copyright (C) 1999
 ###  Justin Lokhorst <jlokhors@stats.adelaide.edu.au>
 ###  Berwin A. Turlach <bturlach@stats.adelaide.edu.au>
@@ -78,10 +81,8 @@ gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
           validmu <- function(mu) TRUE
       ## eval(family$initialize)
       ## calculates mustart and may change y and weights and set n (!)
-      mustart <- NULL  ## make codetools happy
       eval(family$initialize)
 
-      dev.res <- NULL  ## make codetools happy
       family$deviance <- function(mu, y, weights, residuals = FALSE)
       {
           dr <- dev.res(y, mu, weights)

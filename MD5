@@ -1,6 +1,6 @@
 adcec988f2429351345e8011a17fd316 *COPYRIGHT
-897ee0e0182f7f2b099ddf528278b204 *ChangeLog
-211c7d61627b0aca1225108511b6a8d8 *DESCRIPTION
+68c45b1fc52dfdcd4dbf5312273f54d2 *ChangeLog
+36670678d394270054759f4a86ef4d95 *DESCRIPTION
 e0d80dee05aa6c9a6573e7d8fa8f416a *INDEX
 751419260aa954499f7abaabaa882bbe *LICENSE.GPL-2
 d32239bcb673463ab874e80d47fae504 *LICENSE.GPL-3
@@ -11,7 +11,7 @@ ae422bc421542b12d224ce66a8f11912 *R/coef.q
 875d2142a71113f0fa1410ac2be23d18 *R/fitted.q
 ed1c10b1ba1939db6070f299c879dd1d *R/formula.util.q
 37b413061dc95aa3d98e7cf673264591 *R/gcv.q
-7d998f79f600721db8e608cebb72df1f *R/gl1ce.q
+008e129e5e040d22de0e5fca215a995d *R/gl1ce.q
 6dd01ab3201a074f5f800fcf8cc6e1ba *R/l1ce.q
 b4f4b54154110f312a697351f5e11cde *R/labels.q
 49d611e119e4843677daa8228ff22a3c *R/misc.q
@@ -62,8 +62,6 @@ ea5902d605f2dcc57963f359e64a1063 *man/tr.Rd
 136e55173d82b320867db842d874c76a *man/zaux.Rd
 b5a4b68c592b99bf7cf80e944a8e64df *man/zaux.l1celist.Rd
 21c76fd0c114e754b9a48815d3e84ed7 *src/lasso.c
-671a6af8c5c7a357251a422a870acf5b *src/lasso.h
-a4eb4981c65784db7b4f1a59b3058a36 *tests/l1ce-tst.R
-4cd05e740fbc0776d4f1462e88ee720b *tests/l1ce-tst.Rout-lynne
-d6a8ac22163a7e42058246b19534145a *tests/l1ce-tst.Rout.save
-9430efd69f5f77de667ec67633e3268c *tests/l1ce-tst.Rout.save-orig
+035269a3a0cf6373f7d1056b3b840636 *src/lasso.h
+5d000a55e73d4197e4e7ead07f8af843 *tests/l1ce-tst.R
+e4f0b8adbf7e3994a13056c24dd96ffa *tests/l1ce-tst.Rout.save

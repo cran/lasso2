@@ -1,3 +1,21 @@
+2013-04-19  Berwin A Turlach  <Berwin.Turlach@gmail.com>
+
+	* tests/l1ce-tst.R: Changed lowest bound to 1e-5 in two places to
+	avoid problems with valgrind.
+
+	* DESCRIPTION: New versino is 1.2-16
+
+	* R/gl1ce.q: Followed Brian's advice to use utils::globalVariables
+	to make codetools happy regarding dev.res and mustart.
+
+	* src/lasso.h: removed typedef declaration in USING_R conditional
+	as <R.h> is included there now (which contains the typedef)
+
+2013-04-18  Berwin A Turlach  <Berwin.Turlach@gmail.com>
+
+	* R/gl1ce.q: Added "dev.res <- NULL" and "mustart <- NULL" at
+	strategic places to make codetools happy.
+
 2013-04-17  Berwin A Turlach  <Berwin.Turlach@gmail.com>
 
 	* DESCRIPTION (Date): New version is 1.2-15
