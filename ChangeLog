@@ -1,9 +1,28 @@
+2013-10-31  Berwin A Turlach  <Berwin.Turlach@gmail.com>
+
+	* DESCRIPTION: New version is 1.2-18
+
+	* moved COPYRIGHT to inst/COPYRIGHTS as suggested by BDR
+
+	* renamed LICENCE.GPL-[23] to GPL-[23] as suggested by BDR
+
+	* use .Rbuildignore to remove some files from the build, as
+	suggested by BDR.
+
+	* DESCRIPTION: New version is 1.2-17
+
+	* man/residuals.l1ce.Rd: Removed link to residuals.default (as
+	required by newer versions of R)
+
+	* moved vignette to vignettes/ subdirectory.
+
+
 2013-04-19  Berwin A Turlach  <Berwin.Turlach@gmail.com>
 
 	* tests/l1ce-tst.R: Changed lowest bound to 1e-5 in two places to
 	avoid problems with valgrind.
 
-	* DESCRIPTION: New versino is 1.2-16
+	* DESCRIPTION: New version is 1.2-16
 
 	* R/gl1ce.q: Followed Brian's advice to use utils::globalVariables
 	to make codetools happy regarding dev.res and mustart.

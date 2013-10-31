@@ -25,7 +25,7 @@
   This is a method for the function \code{\link{residuals}} for objects
   inheriting from class \code{l1ce} or \code{l1celist} (see
   \code{help(\link{l1ce.object})} and \code{help(\link{l1celist.object})}).
-  See \code{\link{residuals}} or \code{\link{residuals.default}} for the
+  See \code{\link{residuals}} for the
   general behavior of this function and for the interpretation of
   \code{object} and \code{type}.
 }
