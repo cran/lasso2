@@ -1,4 +1,3 @@
-#line 122 "lasso.nw"
 /* Copyright (C) 1998
    Berwin A Turlach <bturlach@stats.adelaide.edu.au> */
 
@@ -17,24 +16,15 @@
    Foundation, Inc., 59 Temple Place, Suite 330, Boston,
    MA 02111-1307, USA. */
 
-#line 174 "lasso.nw"
 #include "lasso.h"
 
-#line 82 "dynmem.nw"
 static void lasso_alloc(Sint n, Sint m);
-#line 105 "dynmem.nw"
 static void lasso_free(void);
-#line 167 "qr.nw"
 static void qr_init(int n);
-#line 210 "qr.nw"
 static void qr_incr(void);
-#line 229 "qr.nw"
 static void qr_free(void);
-#line 319 "qr.nw"
 static void qr_del(int l, int aug);
-#line 453 "qr.nw"
 static void qr_add(double *x, int swap);
-#line 53 "utility.nw"
 #if defined (S_or_R)
 static void errmsg(char* string);
 #else
@@ -44,61 +34,44 @@ static void errmsg(char* where, char* string);
 
 /* Global Variables [yuck!] : */
 
-#line 110 "dynmem.nw"
   static double *xtr=NULL, *btmp=NULL, *qtr=NULL,
     *rinvt_theta=NULL, *step=NULL, ytyd2=0.0;
   static int *theta=NULL, *nz_x=NULL, num_nz_x=0;
-#line 87 "qr.nw"
   static double *qmat=NULL, *rmat=NULL;
   static int qr_max_size=0, r_ncol=0, q_nrow=0, q_use_row=0;
-#line 77 "utility.nw"
   static char *no_dyn_mem_message="Cannot allocate dynamic memory";
 
-#line 91 "genlasso.nw"
 
 void lasso(double *x, Sint *pn, Sint *pm, double *pt,
            double *beta, double *y, double *yhat1, double *r,
            double *lagrangian, Sint *psuc, Sint *pverb, Sint *pas_sub)
 {
 
-#line 132 "genlasso.nw"
     double t = *pt, prec;
     Sint n = *pn, m = *pm, verb = *pverb, as_sub = *pas_sub;
     int not_solved;
-#line 306 "genlasso.nw"
     double *x_elem=NULL, tmp, max_val, b_1norm;
     int i, j, max_ind;
-#line 327 "genlasso.nw"
     double p_obj, d_obj;
     int num_iter=0, max_num;
-#line 399 "genlasso.nw"
     double b_1norm_old, mu;
-#line 491 "genlasso.nw"
     double rho_up, rho_low, rho;
     int to_del;
-#line 522 "genlasso.nw"
     double *q_elem, wtc, wtw;
-#line 543 "genlasso.nw"
     double *r_elem;
     int k;
-#line 611 "genlasso.nw"
     int add;
-#line 96 "genlasso.nw"
     if( !as_sub)
 	lasso_alloc(n,m);
 
-#line 146 "genlasso.nw"
     prec = sqrt(DBL_EPSILON);
     if( as_sub ) {
 
-#line 165 "genlasso.nw"
 	b_1norm = 0.0;
 	for(j=0;j < num_nz_x;j++)
 	    b_1norm += fabs(beta[nz_x[j]]);
-#line 149 "genlasso.nw"
     } else {
 
-#line 174 "genlasso.nw"
 	b_1norm = 0.0;
 	num_nz_x = 0;
 	for(j=0; j < m; j++) {
@@ -109,7 +82,6 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 	    } else
 		beta[j] = 0.0;
 	}
-#line 151 "genlasso.nw"
     }
     if( b_1norm > t) {
 	if(verb) {
@@ -120,11 +92,8 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 	    beta[nz_x[j]] = beta[nz_x[j]] * t/b_1norm;
 	b_1norm = t;
     }
-#line 99 "genlasso.nw"
 
-#line 210 "genlasso.nw"
 
-#line 237 "genlasso.nw"
     for(i=0; i <  n; i++)
 	yhat1[i] = 0.0;
     for(j=0; j < num_nz_x; j++) {
@@ -141,10 +110,8 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
     /* calculate the residual vector */
     for(i=0; i <  n; i++)
 	r[i] = y[i]-yhat1[i];
-#line 210 "genlasso.nw"
 
 
-#line 263 "genlasso.nw"
     /* multiply X^T with the residual vector */
     x_elem = x;
     for(j=0; j < m; j++) {
@@ -162,11 +129,9 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 	    max_val = fabs(xtr[j]);
 	    max_ind = j;
 	}
-#line 211 "genlasso.nw"
 
     if( !as_sub ) {
 
-#line 293 "genlasso.nw"
 	qr_add(y,TRUE);
 	ytyd2 = *rmat * *rmat/2.0;
 	for(j=0;j < num_nz_x;j++) {
@@ -176,7 +141,6 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 	    else
 		theta[j] = beta[nz_x[j]] < 0 ? -1 : 1;
 	}
-#line 214 "genlasso.nw"
     }
     if( num_nz_x==0 ) {
 	nz_x[0] = max_ind;
@@ -189,12 +153,9 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 	theta[0] = xtr[max_ind] < 0 ? -1 : 1;
     }
     *psuc=0;
-#line 100 "genlasso.nw"
     if(verb) {
 
-#line 312 "genlasso.nw"
 
-#line 334 "genlasso.nw"
 	/* Find out how many times [[max_val]] is attained */
 	tmp = (1.0-prec)*max_val;
 	if( tmp < prec ) tmp = 0.0;
@@ -217,7 +178,6 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 	}
 	p_obj /= 2.0;
 	d_obj = ytyd2 - d_obj/2.0 - t*max_val ;
-#line 313 "genlasso.nw"
 	Sprintf("******************************\n");
 	Sprintf("\nIteration number: %d\n", num_iter);
 	Sprintf("Value of primal object function      : %f\n", p_obj);
@@ -228,14 +188,11 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 	Sprintf(" attained %d time(s)\n", max_num);
 	Sprintf("Number of parameters allowed to vary : %d\n", num_nz_x);
 	num_iter++;
-#line 102 "genlasso.nw"
     }
     while(1) {
 	do {
 
-#line 371 "genlasso.nw"
 
-#line 511 "genlasso.nw"
 	    q_elem = qmat;
 	    for(j=0;j < num_nz_x;j++) {
 		tmp = 0.0;
@@ -243,12 +200,10 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 		    tmp += *q_elem*r[i];
 		qtr[j] = tmp;
 	    }
-#line 372 "genlasso.nw"
 	    if( b_1norm < (1.0-prec)*t )
 		mu = 0.0;
 	    else {
 
-#line 531 "genlasso.nw"
 		/* z=R^{-T}\theta can be calculated by solving R^Tz=\theta */
 		r_elem = rmat;
 		for(j=0;j < num_nz_x;j++,r_elem++) {
@@ -257,9 +212,7 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 			tmp -= *r_elem * rinvt_theta[k];
 		    rinvt_theta[j] = tmp /  *r_elem;
 		}
-#line 376 "genlasso.nw"
 
-#line 499 "genlasso.nw"
 		wtc = 0.0;
 		wtw = 0.0;
 		for(j=0;j < num_nz_x;j++) {
@@ -267,10 +220,8 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 		    wtw += rinvt_theta[j]*rinvt_theta[j];
 		}
 		mu = (wtc-(t-b_1norm))/wtw;
-#line 377 "genlasso.nw"
 	    }
 
-#line 557 "genlasso.nw"
 	    if(mu<=0.0)
 		for(j=0;j < num_nz_x;j++)
 		    step[j] = qtr[j];
@@ -285,25 +236,21 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 		    tmp -= RMAT(j,k) * step[k];
 		step[j] = tmp /  RMAT(j,j);
 	    }
-#line 379 "genlasso.nw"
 	    for(j=0;j < num_nz_x;j++) {
 		btmp[j] = beta[nz_x[j]];
 		beta[nz_x[j]] += step[j];
 	    }
 	    b_1norm_old=b_1norm;
 
-#line 165 "genlasso.nw"
 	    b_1norm = 0.0;
 	    for(j=0;j < num_nz_x;j++)
 		b_1norm += fabs(beta[nz_x[j]]);
-#line 384 "genlasso.nw"
 
 	    not_solved=FALSE;
 	    if( b_1norm > (1+prec)*t) {
 		not_solved=TRUE;
 		if(b_1norm_old < (1.0-prec)*t) {
 
-#line 415 "genlasso.nw"
 		    if(verb)
 			Sprintf("  -->\tStepping onto the border of the L1 ball.\n");
 		    rho_up  = rho = 1.0;
@@ -321,11 +268,9 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 			for(j=0; j < num_nz_x; j++)
 			    beta[nz_x[j]] = btmp[j]+rho*step[j];
 
-#line 165 "genlasso.nw"
 			b_1norm = 0.0;
 			for(j=0;j < num_nz_x;j++)
 			    b_1norm += fabs(beta[nz_x[j]]);
-#line 432 "genlasso.nw"
 		    }
 		    for(j=0;j < num_nz_x;j++) {
 			if(fabs(beta[nz_x[j]]) < prec)
@@ -333,12 +278,9 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 			else
 			    theta[j] = beta[nz_x[j]] < 0 ? -1 : 1;
 		    }
-#line 390 "genlasso.nw"
 		} else {
 
-#line 448 "genlasso.nw"
 
-#line 472 "genlasso.nw"
 		    rho = 1.0;
 		    to_del = -1;
 		    for(j=0; j < num_nz_x; j++) {
@@ -354,7 +296,6 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 			*psuc= -1;
 			goto EXIT_HERE;
 		    }
-#line 449 "genlasso.nw"
 		    for(j=0; j<num_nz_x; j++)
 			beta[nz_x[j]] = btmp[j]+rho*step[j];
 		    if(verb)
@@ -367,22 +308,18 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 		    }
 		    num_nz_x--;
 
-#line 165 "genlasso.nw"
 		    b_1norm = 0.0;
 		    for(j=0;j<num_nz_x;j++)
 			b_1norm += fabs(beta[nz_x[j]]);
-#line 461 "genlasso.nw"
 		    if(verb) {
 			if(b_1norm < (1-prec)*t)
 			    Sprintf(", and stepping into the interior of the L1 ball\n");
 			else
 			    Sprintf("\n");
 		    }
-#line 392 "genlasso.nw"
 		}
 	    }
 
-#line 237 "genlasso.nw"
 	    for(i=0; i< n; i++)
 		yhat1[i] = 0.0;
 	    for(j=0; j < num_nz_x; j++) {
@@ -399,12 +336,9 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 	    /* calculate the residual vector */
 	    for(i=0; i< n; i++)
 		r[i] = y[i]-yhat1[i];
-#line 106 "genlasso.nw"
 	}while(not_solved);
 
-#line 577 "genlasso.nw"
 
-#line 237 "genlasso.nw"
 	for(i=0; i< n; i++)
 	    yhat1[i] = 0.0;
 	for(j=0; j < num_nz_x; j++) {
@@ -421,10 +355,8 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 	/* calculate the residual vector */
 	for(i=0; i< n; i++)
 	    r[i] = y[i]-yhat1[i];
-#line 577 "genlasso.nw"
 
 
-#line 263 "genlasso.nw"
 	/* multiply X^T with the residual vector */
 	x_elem = x;
 	for(j=0; j < m; j++) {
@@ -442,14 +374,10 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 		max_val = fabs(xtr[j]);
 		max_ind = j;
 	    }
-#line 578 "genlasso.nw"
 
-#line 108 "genlasso.nw"
 	if(verb) {
 
-#line 312 "genlasso.nw"
 
-#line 334 "genlasso.nw"
 	    /* Find out how many times [[max_val]] is attained */
 	    tmp = (1.0-prec)*max_val;
 	    if( tmp < prec ) tmp = 0.0;
@@ -472,7 +400,6 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 	    }
 	    p_obj /= 2.0;
 	    d_obj = ytyd2 - d_obj/2.0 - t*max_val ;
-#line 313 "genlasso.nw"
 	    Sprintf("******************************\n");
 	    Sprintf("\nIteration number: %d\n", num_iter);
 	    Sprintf("Value of primal object function      : %f\n", p_obj);
@@ -483,10 +410,8 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 	    Sprintf(" attained %d time(s)\n", max_num);
 	    Sprintf("Number of parameters allowed to vary : %d\n", num_nz_x);
 	    num_iter++;
-#line 110 "genlasso.nw"
 	}
 
-#line 589 "genlasso.nw"
 	add = TRUE;
 	for(i=0; i<num_nz_x; i++)
 	    if(nz_x[i]==max_ind) {
@@ -503,33 +428,26 @@ void lasso(double *x, Sint *pn, Sint *pm, double *pt,
 	    break;
 	}
 
-#line 165 "genlasso.nw"
 	b_1norm = 0.0;
 	for(j=0; j < num_nz_x; j++)
 	    b_1norm += fabs(beta[nz_x[j]]);
-#line 605 "genlasso.nw"
 	if(verb)
 	    Sprintf("  -->\tAdding variable: %d\n",max_ind+1);
-#line 112 "genlasso.nw"
     }
 EXIT_HERE:
     if( !as_sub)
 	lasso_free();
 }
-#line 633 "genlasso.nw"
 void mult_lasso(double *x, Sint *pn, Sint *pm, double *pt, Sint *pl,
                 double *beta, double *y, double *yhat1, double *r,
                 double *lagrangian, Sint *psuc, Sint *pverb)
 {
 
-#line 658 "genlasso.nw"
     double prec;
     Sint n = *pn, m = *pm, l = *pl, verb = *pverb, as_sub = TRUE;
     int i, j;
-#line 638 "genlasso.nw"
     lasso_alloc(n,m);
 
-#line 667 "genlasso.nw"
     qr_add(y,TRUE);
     ytyd2 = *rmat * *rmat/2.0;
     prec = sqrt(DBL_EPSILON);
@@ -543,10 +461,8 @@ void mult_lasso(double *x, Sint *pn, Sint *pm, double *pt, Sint *pl,
 	    beta[j] = 0.0;
     }
     *psuc = 0;
-#line 640 "genlasso.nw"
     for(i=0; i<l; i++) {
 
-#line 690 "genlasso.nw"
 	if(verb) {
 	    Sprintf("\n\n++++++++++++++++++++++++++++++\n");
 	    Sprintf("Solving problem number %d with bound %f\n", i+1, pt[i]);
@@ -562,12 +478,10 @@ void mult_lasso(double *x, Sint *pn, Sint *pm, double *pt, Sint *pl,
 	yhat1 += n;
 	r += n;
 	lagrangian++;
-#line 642 "genlasso.nw"
     }
 EXIT_HERE:
     lasso_free();
 }
-#line 43 "dynmem.nw"
 static void lasso_alloc(Sint n, Sint m)
 {
 
@@ -603,7 +517,6 @@ static void lasso_alloc(Sint n, Sint m)
 	ERRMSG("lasso_alloc", no_dyn_mem_message);
     qr_init(n);
 }
-#line 88 "dynmem.nw"
 static void lasso_free(void) {
   num_nz_x=0;
   ytyd2 = 0.0;
@@ -616,7 +529,6 @@ static void lasso_free(void) {
   Free(step);
   qr_free();
 }
-#line 144 "qr.nw"
 static void qr_init(int n) {
 #if defined (S_or_R)
     if(qr_max_size!=0 || r_ncol!=0 || q_nrow!=0 || q_use_row!=0 ||
@@ -626,7 +538,7 @@ static void qr_init(int n) {
 	qr_free();
     }
 #endif
-    qr_max_size = QR_CHUNK;
+    qr_max_size = 2*n; //QR_CHUNK;
     r_ncol = 0;
     q_nrow = n;
     qmat = Calloc(n*qr_max_size,double);
@@ -636,7 +548,6 @@ static void qr_init(int n) {
     if(rmat==NULL)
 	ERRMSG("qr_init", no_dyn_mem_message);
 }
-#line 185 "qr.nw"
 static void qr_incr(void) {
   qr_max_size += QR_CHUNK;
 
@@ -646,19 +557,10 @@ static void qr_incr(void) {
     ERRMSG("qr_incr", no_dyn_mem_message);
 
   /* reallocate Q only if necessary and only to maximal necessary size */
-  if( qr_max_size >= q_nrow) {
-    if( qr_max_size-QR_CHUNK < q_nrow) {
-      qmat = Realloc(qmat,q_nrow*q_nrow,double);
-      if(qmat==NULL)
-        ERRMSG("qr_incr", no_dyn_mem_message);
-    }
-  } else {
     qmat = Realloc(qmat,q_nrow*qr_max_size,double);
     if(qmat==NULL)
       ERRMSG("qr_incr", no_dyn_mem_message);
-  }
 }
-#line 216 "qr.nw"
 static void qr_free(void)
 {
   qr_max_size = 0;
@@ -668,14 +570,11 @@ static void qr_free(void)
   Free(qmat);
   Free(rmat);
 }
-#line 285 "qr.nw"
 static void qr_del(int l, int aug) {
 
-#line 324 "qr.nw"
     double c, s, tau, nu, *col_k, *col_kp1, *a, *b, tmp;
     int i, j, k, l0;
 
-#line 287 "qr.nw"
     if( l<0 || l>=r_ncol )
 	ERRMSG("qr_del", "Invalid column number");
     r_ncol--;
@@ -690,7 +589,6 @@ static void qr_del(int l, int aug) {
 	for(k=l; k<r_ncol; k++) /* Update the factorisation and be done */
 	{
 
-#line 373 "qr.nw"
 	    col_k = RCOL(k);  /* first element in column $k$ in R */
 	    Memcpy(col_k,col_k+k+1,k+1);
 	    a = col_k+k;
@@ -702,7 +600,6 @@ static void qr_del(int l, int aug) {
 	    c = *a/nu;
 	    s = *b/nu;
 	    *a = nu;
-#line 403 "qr.nw"
 	    b += k+2;
 	    a = b-1;
 	    for(j=k+2;j<=r_ncol;j++, a+=j, b+=j) {
@@ -717,14 +614,12 @@ static void qr_del(int l, int aug) {
 		col_kp1[j] = c*col_kp1[j]-s*col_k[j];
 		col_k[j] = tmp;
 	    }
-#line 301 "qr.nw"
 	}
     } else
 	if( l < q_nrow ) {
 	    /* Update columns upto $m$ and than shift remaining columns */
 	    for(k=l; k<q_nrow-1; k++) {
 
-#line 373 "qr.nw"
 		col_k = RCOL(k);  /* first element in column $k$ in R */
 		Memcpy(col_k,col_k+k+1,k+1);
 		a = col_k+k;
@@ -736,7 +631,6 @@ static void qr_del(int l, int aug) {
 		c = *a/nu;
 		s = *b/nu;
 		*a = nu;
-#line 403 "qr.nw"
 		b += k+2;
 		a = b-1;
 		for(j=k+2;j<=r_ncol;j++, a+=j, b+=j) {
@@ -751,11 +645,9 @@ static void qr_del(int l, int aug) {
 		    col_kp1[j] = c*col_kp1[j]-s*col_k[j];
 		    col_k[j] = tmp;
 		}
-#line 307 "qr.nw"
 	    }
 	    l0 = q_nrow-1;
 
-#line 339 "qr.nw"
 	    col_k   = RCOL(l0); /* first element in column $l_0$ in R */
 	    for(i=l0; i<r_ncol; i++, col_k +=i)
 		Memcpy(col_k,col_k+i+1,q_nrow);
@@ -771,11 +663,9 @@ static void qr_del(int l, int aug) {
 		for(i=0;i<q_nrow;i++,col_k++)
 		    *col_k = -*col_k;
 	    }
-#line 310 "qr.nw"
 	} else { /* just shift last columns to the left */
 	    l0 = l;
 
-#line 339 "qr.nw"
 	    col_k   = RCOL(l0); /* first element in column $l_0$ in R */
 	    for(i=l0; i<r_ncol; i++, col_k +=i)
 		Memcpy(col_k,col_k+i+1,q_nrow);
@@ -791,28 +681,20 @@ static void qr_del(int l, int aug) {
 		for(i=0;i<q_nrow;i++,col_k++)
 		    *col_k = -*col_k;
 	    }
-#line 313 "qr.nw"
 	}
 }
-#line 439 "qr.nw"
 static void qr_add(double *x, int swap) {
 
-#line 488 "qr.nw"
     double tmp, norm_orig, norm_init, norm_last, *q_new_col;
     int i;
-#line 539 "qr.nw"
     double *col_l, *col_lm1, *q_elem, *r_new_col;
-#line 566 "qr.nw"
     double norm_new;
     int j;
-#line 670 "qr.nw"
     double c, s, tau, nu, *a, *b;
 
-#line 441 "qr.nw"
     if( r_ncol == qr_max_size )
 	qr_incr();
 
-#line 465 "qr.nw"
     norm_orig = 0.0;
     tmp = 0.0;
     for(i=0; i<q_nrow; i++) tmp += x[i]*x[i];
@@ -831,7 +713,6 @@ static void qr_add(double *x, int swap) {
 	}
 	norm_init = norm_last = sqrt(tmp);
     }
-#line 502 "qr.nw"
     r_new_col = RCOL(r_ncol);
     for(i=0; i<=r_ncol; i++) r_new_col[i] = 0.0;
     if( r_ncol >= q_nrow ) {
@@ -865,10 +746,8 @@ static void qr_add(double *x, int swap) {
 	r_ncol++;
 	return;
     }
-#line 444 "qr.nw"
     while(1) {
 
-#line 549 "qr.nw"
 	q_elem = qmat;
 	for(j=0; j<r_ncol;j++) {
 	    tmp = 0.0;
@@ -882,9 +761,7 @@ static void qr_add(double *x, int swap) {
 	tmp = 0.0;
 	for(i=0;i<q_nrow;i++) tmp += q_new_col[i]*q_new_col[i];
 	norm_new = sqrt(tmp);
-#line 446 "qr.nw"
 
-#line 590 "qr.nw"
 	if( norm_new >= norm_last/2.0) break;
 	if( norm_new > 0.1*norm_init*DBL_EPSILON )
 	    norm_last = norm_new;
@@ -897,10 +774,8 @@ static void qr_add(double *x, int swap) {
 	    q_new_col[q_use_row] = norm_new = norm_last;
 	    q_use_row++;
 	}
-#line 447 "qr.nw"
     }
 
-#line 615 "qr.nw"
     for(i=0;i<q_nrow;i++)
 	q_new_col[i] /= norm_new;
     for(i=0;i<r_ncol;i++)
@@ -908,7 +783,6 @@ static void qr_add(double *x, int swap) {
     r_new_col[r_ncol] = norm_new*norm_orig;
     if(swap) {
 
-#line 641 "qr.nw"
 	col_l = r_new_col; /* first element in last column in R */
 	col_lm1 = r_new_col-r_ncol; /* first element in column before last in R */
 	for(j=0;j<r_ncol;j++,col_l++,col_lm1++) {
@@ -931,7 +805,6 @@ static void qr_add(double *x, int swap) {
 	    if( *b < 0) {
 		*b = -*b;
 
-#line 675 "qr.nw"
 		col_lm1 = QCOL(r_ncol-1);
 		col_l   = col_lm1+q_nrow;
 		for(j=0;j<q_nrow;j++) {
@@ -940,10 +813,8 @@ static void qr_add(double *x, int swap) {
 		    col_lm1[j] = tmp;
 		}
 
-#line 663 "qr.nw"
 	    } else {
 
-#line 686 "qr.nw"
 		col_lm1 = QCOL(r_ncol-1);
 		col_l   = col_lm1+q_nrow;
 		for(j=0;j<q_nrow;j++) {
@@ -951,17 +822,13 @@ static void qr_add(double *x, int swap) {
 		    col_l[j] = c*col_l[j]-s*col_lm1[j];
 		    col_lm1[j] = tmp;
 		}
-#line 665 "qr.nw"
 	    }
 	}
 
-#line 622 "qr.nw"
     }
     r_ncol++;
 
-#line 449 "qr.nw"
 }
-#line 38 "utility.nw"
 #if defined (S_or_R)
 static void errmsg(char *string) {
   PROBLEM "%s\n", string RECOVER(NULL_ENTRY);

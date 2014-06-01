@@ -1,5 +1,5 @@
 8a42cb3aec8f692ee7240383849b5ec2 *ChangeLog
-94d0bc503efdb3b673dd3a6b3fb0d2a0 *DESCRIPTION
+f06a46cbbe83fb95b8bdc9c8a6f9d287 *DESCRIPTION
 751419260aa954499f7abaabaa882bbe *GPL-2
 d32239bcb673463ab874e80d47fae504 *GPL-3
 e0d80dee05aa6c9a6573e7d8fa8f416a *INDEX
@@ -21,7 +21,7 @@ d1a8550b8a2d5bda71853afd46346cf6 *R/residuals.q
 1dc845ae7b7e6da397357e8cf9f4500a *R/vcov.q
 e73a353ab54997179a0b5a230bcf877a *R/zzz.q
 4bb9a218704f8a4faab5b0506f59a04e *README
-a937c6cbcdb41162bf5d91facaa4477c *build/vignette.rds
+081f3b9f89cc29662661374741391449 *build/vignette.rds
 314cca4b44517549ff4647e143c9d02b *data/Iowa.tab.gz
 0b63bf337858528a9e3d2559080e2189 *data/Prostate.rda
 adcec988f2429351345e8011a17fd316 *inst/COPYRIGHTS/COPYRIGHT
@@ -60,7 +60,7 @@ ea5902d605f2dcc57963f359e64a1063 *man/tr.Rd
 45098e604c1c435256ee6756422d6fc6 *man/vcov.l1ce.Rd
 136e55173d82b320867db842d874c76a *man/zaux.Rd
 b5a4b68c592b99bf7cf80e944a8e64df *man/zaux.l1celist.Rd
-21c76fd0c114e754b9a48815d3e84ed7 *src/lasso.c
+13b4f5674093aff2e83eb9f4e4bb0fca *src/lasso.c
 035269a3a0cf6373f7d1056b3b840636 *src/lasso.h
 5d000a55e73d4197e4e7ead07f8af843 *tests/l1ce-tst.R
 dc2f98764ef98db219afbe978d712759 *vignettes/Manual-vignette.Rnw
