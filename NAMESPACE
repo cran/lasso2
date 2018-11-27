@@ -3,7 +3,6 @@ useDynLib(lasso2)
 export(gcv)
 export(gl1ce)
 export(l1ce)
-export(merge.formula)
 export(qr.rtr.inv)
 export(tr)
 
@@ -40,4 +39,9 @@ S3method(summary, l1ce)
 S3method(summary, gl1ce)
 S3method("[", l1celist)
 S3method("[[", l1celist)
+S3method(merge, formula)
 
+importFrom("graphics", "matplot", "rug")
+importFrom("stats", "as.formula", "gaussian", "glm.control",
+           "model.extract", "model.matrix", "pnorm", "quantile",
+           "residuals.glm", "sd", "terms")

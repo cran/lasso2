@@ -1,9 +1,9 @@
 8a42cb3aec8f692ee7240383849b5ec2 *ChangeLog
-f06a46cbbe83fb95b8bdc9c8a6f9d287 *DESCRIPTION
+50a4810e5ef308d60087e50313d82278 *DESCRIPTION
 751419260aa954499f7abaabaa882bbe *GPL-2
 d32239bcb673463ab874e80d47fae504 *GPL-3
 e0d80dee05aa6c9a6573e7d8fa8f416a *INDEX
-6b4b1fc9445c84e8f93cfe48c51662d2 *NAMESPACE
+acf7adc5715fb3ff93cb86d79bed2376 *NAMESPACE
 ae422bc421542b12d224ce66a8f11912 *R/coef.q
 53cfc3e7f96477b9f57a6f363a0c3e1a *R/deviance.q
 875d2142a71113f0fa1410ac2be23d18 *R/fitted.q
@@ -21,13 +21,12 @@ d1a8550b8a2d5bda71853afd46346cf6 *R/residuals.q
 1dc845ae7b7e6da397357e8cf9f4500a *R/vcov.q
 e73a353ab54997179a0b5a230bcf877a *R/zzz.q
 4bb9a218704f8a4faab5b0506f59a04e *README
-081f3b9f89cc29662661374741391449 *build/vignette.rds
+00992689ea4a1490427f1a1bf0cb3bd7 *build/vignette.rds
 314cca4b44517549ff4647e143c9d02b *data/Iowa.tab.gz
 0b63bf337858528a9e3d2559080e2189 *data/Prostate.rda
 adcec988f2429351345e8011a17fd316 *inst/COPYRIGHTS/COPYRIGHT
 dc2f98764ef98db219afbe978d712759 *inst/doc/Manual-vignette.Rnw
-647bd0aca9b4653a21907c429df6457c *inst/doc/Manual-vignette.pdf
-0bfd9e0b5a47068a54383f8722ab90c4 *inst/doc/lasso.html
+845a06805277780b3ae446e36dcc5363 *inst/doc/Manual-vignette.pdf
 aa4f51d6e9f0c413ee2df32ec8ec5bfc *man/Extract.l1celist.Rd
 8e219ea0d03c8ec85a369b25d4f14d21 *man/Iowa.Rd
 cbeb10da10d9bd5dcd506410168e98e4 *man/Prostate.Rd
@@ -46,7 +45,7 @@ da5d979a63bced30719d9fe74c4b265b *man/gcv.l1ce.Rd
 ab3d3031fe1b4d4569c971f43a2c1539 *man/l1celist.object.Rd
 0dca2126e6cdde9678879bb90e82e26b *man/labels.l1ce.Rd
 51aa7dbca4858ee9bf1d28e67a82d01b *man/lasso-internal.Rd
-d603b93270e20cabf2a9b8170b24dba0 *man/merge.formula.Rd
+114db9610ce6383b7fcfbd2d82833788 *man/merge.formula.Rd
 8f950c69b851cac0f92ee5f7ec2f67e4 *man/plot.l1celist.Rd
 5d2801a6dbb14e0ef7650525006e57bd *man/predict.gl1ce.Rd
 8138d1dfd6f0a808d6f2f18c86b23f77 *man/predict.l1ce.Rd
@@ -60,6 +59,7 @@ ea5902d605f2dcc57963f359e64a1063 *man/tr.Rd
 45098e604c1c435256ee6756422d6fc6 *man/vcov.l1ce.Rd
 136e55173d82b320867db842d874c76a *man/zaux.Rd
 b5a4b68c592b99bf7cf80e944a8e64df *man/zaux.l1celist.Rd
+03044500b3e71e769fb413a13a3cd2e5 *src/init.c
 13b4f5674093aff2e83eb9f4e4bb0fca *src/lasso.c
 035269a3a0cf6373f7d1056b3b840636 *src/lasso.h
 5d000a55e73d4197e4e7ead07f8af843 *tests/l1ce-tst.R

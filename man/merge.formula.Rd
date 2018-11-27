@@ -18,10 +18,10 @@
   not intended to be called directly by users.
 }
 \examples{
-merge.formula(y ~ x1, ~ x2) ## ->  y ~ x1 + x2
+merge(y ~ x1, ~ x2) ## ->  y ~ x1 + x2
 
-f2 <- merge.formula(y ~ x1*x2, z ~ (x2+x4)^3)
-f. <- merge.formula(y ~ x1*x2,   ~ (x2+x4)^3) # no LHS for 2nd term
+f2 <- merge(y ~ x1*x2, z ~ (x2+x4)^3)
+f. <- merge(y ~ x1*x2,   ~ (x2+x4)^3) # no LHS for 2nd term
 f2
 stopifnot(f2 == f.)
 }
