@@ -7,7 +7,7 @@
   the parameters.  Returns an object of class \code{gl1ce}.
 }
 \usage{
-gl1ce(formula, data = sys.parent(), weights, subset, na.action,
+gl1ce(formula, data = parent.frame(), weights, subset, na.action,
       family = gaussian, control = glm.control(\dots), sweep.out = ~ 1,
       x = FALSE, y = TRUE, contrasts = NULL, standardize = TRUE,
       guess.constrained.coefficients = double(p), bound = 0.5, \dots)
@@ -97,9 +97,7 @@ gl1ce(formula, data = sys.parent(), weights, subset, na.action,
 
   Justin Lokhorst (1999).
   The LASSO and Generalised Linear Models,
-  Honors Project, Nov.1999, Dept.Statist., Univ. of Adelaide.
-  Available as file \file{Doc/justin.lokhorst.ps.gz} in both shar files
-  from \url{http://www.maths.uwa.edu.au/~berwin/software/lasso.html}.
+  Honors Project, Nov. 1999, Dept.Statist., Univ. of Adelaide.
 }
 \seealso{\code{\link{glm}} for unconstrained generalized regression
   modeling.

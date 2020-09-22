@@ -24,7 +24,7 @@ if(is.R()) {
     }
 }
 
-l1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
+l1ce <- function(formula, data = parent.frame(), weights, subset, na.action,
                  sweep.out = ~ 1,
 		 x = FALSE, y = FALSE, contrasts = NULL, standardize = TRUE,
 		 trace = FALSE,

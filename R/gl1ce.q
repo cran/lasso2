@@ -10,7 +10,7 @@ if(getRversion() >= "2.15.1")
 
 ###--- FIXME :    data = sys.parent() for S+
 ###--- =====    glm() in R uses a more general eval() !
-gl1ce <- function(formula, data = sys.parent(), weights, subset, na.action,
+gl1ce <- function(formula, data = parent.frame(), weights, subset, na.action,
                   family = gaussian, control = glm.control(...),
                   sweep.out = ~ 1,
                   x = FALSE, y = TRUE,

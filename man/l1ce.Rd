@@ -6,7 +6,7 @@
   fit(s) of linear models while imposing L1 constraint(s) on the parameters.
 }
 \usage{
-l1ce(formula, data = sys.parent(), weights, subset, na.action,
+l1ce(formula, data = parent.frame(), weights, subset, na.action,
      sweep.out = ~ 1, x = FALSE, y = FALSE,
      contrasts = NULL, standardize = TRUE,
      trace = FALSE, guess.constrained.coefficients = double(p),

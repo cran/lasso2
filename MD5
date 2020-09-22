@@ -1,5 +1,5 @@
 8a42cb3aec8f692ee7240383849b5ec2 *ChangeLog
-50a4810e5ef308d60087e50313d82278 *DESCRIPTION
+cd5262d2a70e50f54a2e4b039451cc73 *DESCRIPTION
 751419260aa954499f7abaabaa882bbe *GPL-2
 d32239bcb673463ab874e80d47fae504 *GPL-3
 e0d80dee05aa6c9a6573e7d8fa8f416a *INDEX
@@ -9,8 +9,8 @@ ae422bc421542b12d224ce66a8f11912 *R/coef.q
 875d2142a71113f0fa1410ac2be23d18 *R/fitted.q
 ed1c10b1ba1939db6070f299c879dd1d *R/formula.util.q
 37b413061dc95aa3d98e7cf673264591 *R/gcv.q
-008e129e5e040d22de0e5fca215a995d *R/gl1ce.q
-6dd01ab3201a074f5f800fcf8cc6e1ba *R/l1ce.q
+ae85f6caec8698a0d574f01a9e12da26 *R/gl1ce.q
+8fa2634d6bca23022bedfaae388c724c *R/l1ce.q
 b4f4b54154110f312a697351f5e11cde *R/labels.q
 49d611e119e4843677daa8228ff22a3c *R/misc.q
 ca65c6afc48ee218816853c06703b272 *R/plot.q
@@ -21,12 +21,12 @@ d1a8550b8a2d5bda71853afd46346cf6 *R/residuals.q
 1dc845ae7b7e6da397357e8cf9f4500a *R/vcov.q
 e73a353ab54997179a0b5a230bcf877a *R/zzz.q
 4bb9a218704f8a4faab5b0506f59a04e *README
-00992689ea4a1490427f1a1bf0cb3bd7 *build/vignette.rds
+0aa9ae91bb68cc0aefb1da1470220d75 *build/vignette.rds
 314cca4b44517549ff4647e143c9d02b *data/Iowa.tab.gz
-0b63bf337858528a9e3d2559080e2189 *data/Prostate.rda
+e5e609105a02846cad63c30ad73ac333 *data/Prostate.rda
 adcec988f2429351345e8011a17fd316 *inst/COPYRIGHTS/COPYRIGHT
 dc2f98764ef98db219afbe978d712759 *inst/doc/Manual-vignette.Rnw
-845a06805277780b3ae446e36dcc5363 *inst/doc/Manual-vignette.pdf
+35507e7aa84a84b230dd0c4ef193d8a0 *inst/doc/Manual-vignette.pdf
 aa4f51d6e9f0c413ee2df32ec8ec5bfc *man/Extract.l1celist.Rd
 8e219ea0d03c8ec85a369b25d4f14d21 *man/Iowa.Rd
 cbeb10da10d9bd5dcd506410168e98e4 *man/Prostate.Rd
@@ -37,10 +37,10 @@ ddc5d754cfd882bfe54ce2744317dd17 *man/deviance.l1ce.Rd
 70aa44bfd8ca53e8b4a2c0a2ee59cb76 *man/fitted.l1ce.Rd
 1aca84b73cc678637b8b043b3d55353b *man/gcv.Rd
 da5d979a63bced30719d9fe74c4b265b *man/gcv.l1ce.Rd
-4af04db638ffe7b4ac39b32883193465 *man/gl1ce.Rd
+55e836bffcfac2a2fae429cbd3b326d1 *man/gl1ce.Rd
 4c245572836a7d0b049c5b51f8c0d44e *man/gl1ce.object.Rd
 2617173e7bd0c565b66300bddb9f1d4c *man/is.formula.Rd
-9c430074b5a6b90f4c416ebc79355ec7 *man/l1ce.Rd
+ffe961f691d1feae151ffbd3b894e63d *man/l1ce.Rd
 9d1c5d396d261fb94519f819eddb16c8 *man/l1ce.object.Rd
 ab3d3031fe1b4d4569c971f43a2c1539 *man/l1celist.object.Rd
 0dca2126e6cdde9678879bb90e82e26b *man/labels.l1ce.Rd
