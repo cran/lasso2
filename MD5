@@ -1,5 +1,5 @@
-8a42cb3aec8f692ee7240383849b5ec2 *ChangeLog
-cd5262d2a70e50f54a2e4b039451cc73 *DESCRIPTION
+e302dde9d712a55f612d2e551447f506 *ChangeLog
+1aa13f5dd1e03221279ed5bb11e1fbc2 *DESCRIPTION
 751419260aa954499f7abaabaa882bbe *GPL-2
 d32239bcb673463ab874e80d47fae504 *GPL-3
 e0d80dee05aa6c9a6573e7d8fa8f416a *INDEX
@@ -21,12 +21,12 @@ d1a8550b8a2d5bda71853afd46346cf6 *R/residuals.q
 1dc845ae7b7e6da397357e8cf9f4500a *R/vcov.q
 e73a353ab54997179a0b5a230bcf877a *R/zzz.q
 4bb9a218704f8a4faab5b0506f59a04e *README
-0aa9ae91bb68cc0aefb1da1470220d75 *build/vignette.rds
+35e6183222e84fa89119e3e04b2b07d3 *build/vignette.rds
 314cca4b44517549ff4647e143c9d02b *data/Iowa.tab.gz
-e5e609105a02846cad63c30ad73ac333 *data/Prostate.rda
+9744e0d420aa2069d9fd15017255d710 *data/Prostate.rda
 adcec988f2429351345e8011a17fd316 *inst/COPYRIGHTS/COPYRIGHT
 dc2f98764ef98db219afbe978d712759 *inst/doc/Manual-vignette.Rnw
-35507e7aa84a84b230dd0c4ef193d8a0 *inst/doc/Manual-vignette.pdf
+aef2046c296f5946882ef1df03f7ea97 *inst/doc/Manual-vignette.pdf
 aa4f51d6e9f0c413ee2df32ec8ec5bfc *man/Extract.l1celist.Rd
 8e219ea0d03c8ec85a369b25d4f14d21 *man/Iowa.Rd
 cbeb10da10d9bd5dcd506410168e98e4 *man/Prostate.Rd
@@ -60,8 +60,8 @@ ea5902d605f2dcc57963f359e64a1063 *man/tr.Rd
 136e55173d82b320867db842d874c76a *man/zaux.Rd
 b5a4b68c592b99bf7cf80e944a8e64df *man/zaux.l1celist.Rd
 03044500b3e71e769fb413a13a3cd2e5 *src/init.c
-13b4f5674093aff2e83eb9f4e4bb0fca *src/lasso.c
-035269a3a0cf6373f7d1056b3b840636 *src/lasso.h
+8e33b60e71da6f6fd27e4a56f1b09372 *src/lasso.c
+d5494538c05639bb3c0488507933ae44 *src/lasso.h
 5d000a55e73d4197e4e7ead07f8af843 *tests/l1ce-tst.R
 dc2f98764ef98db219afbe978d712759 *vignettes/Manual-vignette.Rnw
 149dcb7963e3aa040865967cf01bb50f *vignettes/Manual-wo-help.pdf

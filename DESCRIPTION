@@ -1,6 +1,6 @@
 Package: lasso2
-Version: 1.2-21.1
-Date: 2020-09-22
+Version: 1.2-22
+Date: 2021-10-08
 Author: Justin Lokhorst, Bill Venables and Berwin Turlach;
   port to R, tests etc: Martin Maechler <maechler@stat.math.ethz.ch>
 Maintainer: Berwin Turlach <Berwin.Turlach@gmail.com>
@@ -10,7 +10,7 @@ Description: Routines and documentation for solving regression problems
   the algorithm of Osborne et al. (1998).
 Depends: R (>= 4.0.0)
 License: GPL (>= 2)
-Packaged: 2020-09-22 07:48:30 UTC; berwin
+Packaged: 2021-10-07 18:04:01 UTC; berwin
 NeedsCompilation: yes
 Repository: CRAN
-Date/Publication: 2020-09-22 08:30:12 UTC
+Date/Publication: 2021-10-08 08:10:02 UTC

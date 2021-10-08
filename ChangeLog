@@ -1,3 +1,11 @@
+2021-10-08  Berwin A Turlach  <Berwin.Turlach@gmail.com>
+
+	* DESCRIPTION: New version is 1.2-22
+
+	* src/lasso.c, and src/lasso.h: removed dependence on <Rext/RS.h>,
+	mainly by copying the macros that are used into lasso.h and
+	prefixing everything with "LASSO2_"
+
 2013-10-31  Berwin A Turlach  <Berwin.Turlach@gmail.com>
 
 	* DESCRIPTION: New version is 1.2-18

@@ -25,16 +25,14 @@
 #include <float.h>
 
 #if defined(S_or_R)
-# include <S.h>
-# if defined(SPLUS_VERSION) && SPLUS_VERSION >= 4000
-#  include <newredef.h>
-# endif
-# ifdef USING_R
-#include <R.h>
-# else
-   typedef long Sint;
-# endif
-
+# include <R.h>
+#define LASSO2_PROBLEM_BUFSIZE	4096
+/* Parentheses added for FC4 with gcc4 and -D_FORTIFY_SOURCE=2 */
+#define LASSO2_PROBLEM			{char LASSO2_problem_buf[LASSO2_PROBLEM_BUFSIZE];(snprintf)(LASSO2_problem_buf, LASSO2_PROBLEM_BUFSIZE,
+#define LASSO2_MESSAGE                 {char LASSO2_problem_buf[LASSO2_PROBLEM_BUFSIZE];(snprintf)(LASSO2_problem_buf, LASSO2_PROBLEM_BUFSIZE,
+#define LASSO2_RECOVER(x)		),Rf_error(LASSO2_problem_buf);}
+#define LASSO2_WARNING(x)		),Rf_warning(LASSO2_problem_buf);}
+#define LASSO2_NULL_ENTRY		/**/
 #else /* !defined(S_or_R) */
 # define Calloc(n,t)       malloc((n)*sizeof(t))
 # define Realloc(p,n,t)    realloc(p,(n)*sizeof(t))

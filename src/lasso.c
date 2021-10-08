@@ -489,8 +489,8 @@ static void lasso_alloc(Sint n, Sint m)
     if( nz_x != NULL || theta != NULL || xtr != NULL || btmp != NULL ||
 	qtr != NULL || rinvt_theta != NULL || step != NULL ||
 	num_nz_x != 0 || ytyd2 != 0.0) {
-	MESSAGE "Possible memory corruption or memory leak.\n  We"
-	    "advise to restart your S+ session"  WARNING(NULL_ENTRY);
+	LASSO2_MESSAGE "Possible memory corruption or memory leak.\n  We"
+	    "advise to restart your S+ session"  LASSO2_WARNING(LASSO2_NULL_ENTRY);
 	lasso_free();
     }
 #endif
@@ -533,8 +533,8 @@ static void qr_init(int n) {
 #if defined (S_or_R)
     if(qr_max_size!=0 || r_ncol!=0 || q_nrow!=0 || q_use_row!=0 ||
        qmat!=NULL || rmat!=NULL) {
-	MESSAGE "Possible memory corruption or memory leak.\n  We"
-	    "advise to restart your S+ session"  WARNING(NULL_ENTRY);
+	LASSO2_MESSAGE "Possible memory corruption or memory leak.\n  We"
+	    "advise to restart your S+ session"  LASSO2_WARNING(LASSO2_NULL_ENTRY);
 	qr_free();
     }
 #endif
@@ -831,7 +831,7 @@ static void qr_add(double *x, int swap) {
 }
 #if defined (S_or_R)
 static void errmsg(char *string) {
-  PROBLEM "%s\n", string RECOVER(NULL_ENTRY);
+  LASSO2_PROBLEM "%s\n", string LASSO2_RECOVER(LASSO2_NULL_ENTRY);
 }
 #else
 static void errmsg(char *where, char *string) {
